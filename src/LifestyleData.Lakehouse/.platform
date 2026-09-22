@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "LifestyleData",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "292c0be4-dcaa-8344-4bfd-183ad2cbed23"
+  }
+}

@@ -1,0 +1,46 @@
+table Geography
+	lineageTag: 9599f009-cb41-417e-bb79-80d05e7cbbd3
+
+	column 'Geography Group'
+		dataType: string
+		lineageTag: d41d71fd-08d0-4b76-bb43-9afbe4cdd851
+		summarizeBy: none
+		sourceColumn: Geography Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: cc7d9db5-177e-42bb-9e90-45fbbcb19c57
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 6dc5d50e-3e1c-4a91-9666-9d9b4742fdf7
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	partition Geography-0431aea5-865b-43fb-ab79-4b340f03783c = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("ZZDBDoIwEER/xXD2gEArPRqDRo1e0JPxsEKFJtCSCon+vd1qjdTTbPelk9k5n4PFXUAwDXI19PVkpzTHVxqGwWX6hVvoQBqlZLRe1kKizmfp73ojS6sRi37XxxpEA7LED3NqSTZo1XH80kPzNMrSaAzWXLcgEUWfSF+UdyAw1Ix4YKVBFjgwRsYkk9UnAXUH3rQoMF1WPbveaOKDvdKqKJSZYuKhJbRcK4UhkpiO2boG203iSnDgICqubSGJ8zMuzlBCCe+bfHbKF9jCP9jzh7D5CIt9v+GKQlPqgS208J5siMsL", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Geography Group" = _t, Country = _t, Sales = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Geography Group", type text}, {"Country", type text}, {"Sales", Currency.Type}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","America","Americas",Replacer.ReplaceText,{"Geography Group"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Americas","North America",Replacer.ReplaceText,{"Geography Group"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","North America","N. America",Replacer.ReplaceText,{"Geography Group"})
+				in
+				    #"Replaced Value2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

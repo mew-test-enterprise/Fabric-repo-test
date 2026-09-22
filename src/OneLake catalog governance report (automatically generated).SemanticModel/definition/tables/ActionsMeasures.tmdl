@@ -1,0 +1,237 @@
+table ActionsMeasures
+	isHidden
+	lineageTag: ca8b7f98-09d0-4420-99f8-34264e7fe62d
+
+	measure DescriptedItemsPercentage = ```
+			ROUND( [#WithDescription]/[Item count]* 100, 0) 
+			```
+		formatString: 0
+		isHidden
+		lineageTag: b473d6b8-31b2-420e-9cee-e7fc9de29c3b
+
+		changedProperty = IsHidden
+
+	measure EndorsedItemsPercentage = ROUND([#Endorsed]/[Item count]*100, 0)
+		formatString: 0
+		isHidden
+		lineageTag: 231cd319-b376-42fc-9f26-a013a8be2897
+
+		changedProperty = IsHidden
+
+	measure ItemsNotRefreshedLastMonth = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Months from last refresh] > 1)))
+		formatString: 0
+		isHidden
+		lineageTag: 3adb0970-e2a0-48c2-9b0b-1f477dfc453b
+
+		changedProperty = IsHidden
+
+	measure LabeledItemsPercentage = ROUND([#Labeled]/[Item count] *100, 0)
+		formatString: 0
+		isHidden
+		lineageTag: 3d1f27e2-e732-4612-9f4a-df3b51491aa8
+
+		changedProperty = IsHidden
+
+	measure TaggedItemsPercentage = ROUND([#Tagged]/[Item count]*100, 0)
+		formatString: 0
+		isHidden
+		lineageTag: 7ae61564-aeb1-4e29-8525-a0711a9783bb
+
+		changedProperty = IsHidden
+
+	measure RecentlyVisitedUnlabeledCount = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Label name] IN { "No Label" } && 'All Item - Data Owner'[Months from last visited] <= 3 )))
+		formatString: 0
+		isHidden
+		lineageTag: dfc5d8fc-8bad-4ac2-9c48-b9c870c130c8
+
+		changedProperty = IsHidden
+
+	measure RecentlyRefreshedUnlabeled = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Label name] IN { "No Label" } && 'All Item - Data Owner'[Months from last refresh] <= 1 )))
+		formatString: 0
+		isHidden
+		lineageTag: 4a352ea3-543c-467e-a9e5-fdd3c7ede10e
+
+		changedProperty = IsHidden
+
+	measure EndorsedUnlabeledCount =
+			
+			COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Endorsement] IN { "Promoted", "Certified", "Master Data" } && 'All Item - Data Owner'[Label name] IN { "No Label" })))
+		formatString: 0
+		isHidden
+		lineageTag: bb71851c-6898-4112-bd7c-9e2e0680d178
+
+		changedProperty = IsHidden
+
+	measure RecentlyVisitedRefreshedDescriptedEndorsedCount = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Endorsement] IN { "Promoted", "Certified", "Master Data" } && 'All Item - Data Owner'[Months from last visited] <= 3 && 'All Item - Data Owner'[Months from last refresh] <= 1 && LEN('All Item - Data Owner'[Description]) > 0)))
+		formatString: 0
+		isHidden
+		lineageTag: ad8b41b7-2d69-4dd5-9ffa-fa67be81de59
+
+		changedProperty = IsHidden
+
+	measure RecentlyRefreshedUntaggedCount = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Months from last refresh] <= 1 && 'All Item - Data Owner'[HasTags] == FALSE())))
+		formatString: 0
+		isHidden
+		lineageTag: 3ab1c594-0d42-4c37-adb3-3fa0b6db1a32
+
+		changedProperty = IsHidden
+
+	measure RecentlyVisitedUntaggedCount = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Months from last visited] <= 3 && 'All Item - Data Owner'[HasTags] == FALSE())))
+		formatString: 0
+		isHidden
+		lineageTag: cf59b05a-1835-4a28-9567-7dcd3c69fb10
+
+		changedProperty = IsHidden
+
+	measure EndorsedUndescriptedCount =
+			
+			COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Endorsement] IN { "Promoted", "Certified", "Master Data" } && LEN('All Item - Data Owner'[Description]) = 0)))
+		formatString: 0
+		isHidden
+		lineageTag: d5c778d5-4756-42f1-9416-2cba206e1a60
+
+		changedProperty = IsHidden
+
+	measure RecentlyVisitedUndescriptedCount = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', LEN('All Item - Data Owner'[Description]) = 0 && 'All Item - Data Owner'[Months from last visited] <= 3 )))
+		formatString: 0
+		isHidden
+		lineageTag: 715b42a7-4b69-4642-99c9-1ead6bfb5c71
+
+		changedProperty = IsHidden
+
+	measure RecentlyVisitedUnrefreshedCount = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Months from last visited] <= 3  && 'All Item - Data Owner'[Months from last refresh] > 3)))
+		formatString: 0
+		isHidden
+		lineageTag: b04a226c-fa9c-4d71-939f-4525814f8fa8
+
+		changedProperty = IsHidden
+
+	measure OrphanedItemsCount = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Months from last visited] > 3 )))
+		formatString: 0
+		isHidden
+		lineageTag: 12d6d467-2a43-44e4-8757-9acb2a3fbe60
+
+		changedProperty = IsHidden
+
+	measure NotTaggedItemsCount = [Item count] - [#Tagged]
+		formatString: 0
+		isHidden
+		lineageTag: 3949f116-1834-4d77-90c7-b4793423adae
+
+		changedProperty = IsHidden
+
+	measure UnTaggedItemsPercentage = ROUND([#UnTagged]/[Item count]*100, 0)
+		formatString: 0
+		isHidden
+		lineageTag: 9e4d032e-bed9-4da2-8a60-4cec47386148
+
+		changedProperty = IsHidden
+
+	measure UnLabeledItemsPercentage = ROUND([#Unlabeled]/[Item count] *100, 0)
+		formatString: 0
+		isHidden
+		lineageTag: 6a86acac-b982-47da-aac2-5391809dfc88
+
+		changedProperty = IsHidden
+
+	measure ItemsCount = DISTINCTCOUNT('All Item - Data Owner'[Item ID])
+		formatString: 0
+		isHidden
+		lineageTag: 0d3aa6b4-d28c-455d-82d5-fa255ef9f87c
+
+		changedProperty = IsHidden
+
+	measure ItemsFailedToRefreshCount = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[LastRefreshFailed] = TRUE())))
+		formatString: 0
+		isHidden
+		lineageTag: a3ca1cad-aff5-41bc-9e10-26352890bfe6
+
+		changedProperty = IsHidden
+
+	measure EndorsedItemsMissingDescriptions =
+			
+			COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Endorsement] IN { "Promoted", "Certified", "Master Data" } && LEN('All Item - Data Owner'[Description]) = 0)))
+		formatString: 0
+		isHidden
+		lineageTag: 1d607228-1667-4f93-967a-32d6c61f2d5c
+
+		changedProperty = IsHidden
+
+	measure EndorsedItemsMissingSensitivityLabels =
+			
+			COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Endorsement] IN { "Promoted", "Certified", "Master Data" } && 'All Item - Data Owner'[Label name] IN { "No Label" })))
+		formatString: 0
+		isHidden
+		lineageTag: de38df03-d3af-4230-a10d-65330658e645
+
+		changedProperty = IsHidden
+
+	measure EndorsedItemsTaggedPercentage = ```
+			
+			VAR EndorsedTaggedCount = COUNTROWS(  
+			    DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Endorsement] IN { "Promoted", "Certified", "Master Data" } && 'All Item - Data Owner'[HasTags] == TRUE() ))
+			)  
+			RETURN ROUND(EndorsedTaggedCount / [Item count] * 100, 0)
+			```
+		isHidden
+		lineageTag: 7774d8cc-c5df-4e7e-80c4-18f867a712d7
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure EndorsedItemsUnTaggedCount = ```
+			COUNTROWS(  
+			    DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Endorsement] IN { "Promoted", "Certified", "Master Data" } && 'All Item - Data Owner'[HasTags] == FALSE() ))
+			)  
+			```
+		formatString: 0
+		isHidden
+		lineageTag: a8345ed8-b356-41f6-8627-4e321ace8cf0
+
+		changedProperty = IsHidden
+
+	measure RecentlyRefreshedItemsTaggedPercentage = ```
+			
+			VAR RecentlyRefreshedTaggedCount = COUNTROWS(
+			    DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Months from last refresh] <= 1 && 'All Item - Data Owner'[HasTags] == TRUE())))
+			RETURN ROUND(RecentlyRefreshedTaggedCount / [Item count] * 100, 0) 
+			```
+		isHidden
+		lineageTag: 483dd37f-6eb1-4e74-80ec-9bd993b3fe9c
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RecentlyRefreshedItemsWithoutSensitivityLabel = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Label name] IN { "No Label" } && 'All Item - Data Owner'[Months from last refresh] <= 1 )))
+		formatString: 0
+		isHidden
+		lineageTag: f576b758-f41e-4a11-956d-ddc6b63b14ac
+
+		changedProperty = IsHidden
+
+	measure RecentlyRefreshedTaggedItems = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Months from last refresh] <= 1 && 'All Item - Data Owner'[HasTags] == TRUE())))
+		formatString: 0
+		isHidden
+		lineageTag: d0c49244-c6e4-4be2-9dd9-61bf5a168699
+
+		changedProperty = IsHidden
+
+	partition ActionsMeasures = m
+		mode: import
+		queryGroup: Measures
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

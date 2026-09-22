@@ -1,0 +1,47 @@
+table Country
+	lineageTag: e2c76640-ef27-4fc4-87fb-891d66f08356
+
+	column Country
+		dataType: string
+		lineageTag: 6a92329f-0c62-420a-b0e9-0c54880905ec
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 0bcc151e-736c-4e1d-92d8-bd4ce864f400
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: ea26b19a-1533-4336-a11b-5ebec5b127fe
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column Location = Country[City] & ", " & Country[Country]
+		lineageTag: 474664c1-4ba0-4b50-810c-6ce1c68a552f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Country-fc9babf2-a3f4-4bf6-bad5-08f3cdeabe3a = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("bZRLU9swEID/ioczh9iOX0eaQGBCKK15lKEclljYCoqUkSXS5B/xB3rilj9WPUxrqT5kZrOf972rx8ejCVCo4OhYCaQGvlNSGBZHT8c9dFqtGRWMKjHKUpedwxoTy8Js7LI5FssGUcQ1TBMXLpRLfngHomE8cuFXIWCrhTCJXfJNHt6f0VJJeeaSG8Z1ltoo8pK8A7pk8s0mknmx7jGleINqXV3YJdlgqtEXhFeYGhJHDpmouupKKinNHTCTQOt9wwxyyBXQT2eeTdkomwawEgsPILpXP9Oi2EE32Ljrj6sj91K5M61zU/6Bf8rRKMrAzjE0cIb4GujO1MqJ9Rd7ZMq4WEtaaVbkPjx8tC0iFeMv6l88Sj1+qqgJmPpuzzjQ1xfJRQDrYAEmdpRH3ldqv54l110bFx6aH34Ta+SBS4Q3e2w6nfhlLg4fdGlb2i3CP1YKKYQ6AmH21VZyIYCY9gDX84m6LP6qGWG1aW8yGjlkAgIo1iRzPZ0RxhFdIpO5azNDlMFAlAUmdqRR5uivYENQqw2iyAHXQFRV+hZSL63vbK0jjxNHeyO57X93biWTognmKlFzBrK14eNigE4B1Xrbwzwcpitkn44uE5fP2A6cC/PwVtGVdp/nA/hCz7J7fJIBXiIm9QMzHoxdyq21TYboLemqztMB+sBobc8lsy27LU/UvxPZCtvJdNxTqxtcQm3epm7knZ6gN6RmW5ne98kUCAEz2iTtq5HgDOsFjZ3Pz5kKbIuJs57+EtrgDtXG0+eGdoS1wQmtkV2gzGFXaBs8MP4aTLDY9ZbI0utGrWOFyKYx6527jCGKf/2XXwlURVMZYtOEIvbYFCPTnqhboo4gEILofS10lKc/", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Country = _t, City = _t, Sales = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Country", type text}, {"City", type text}, {"Sales", Currency.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

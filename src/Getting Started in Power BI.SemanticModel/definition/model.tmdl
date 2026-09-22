@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-CA
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBIDesktopVersion = 2.107.246.0 (22.07)
+
+annotation PBI_QueryOrder = ["Product","Geography","Country","Just Geography"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+ref table DateTableTemplate_cf5be25a-0303-473e-87b0-4b1e2b535041
+ref table Product
+ref table Geography
+ref table Country
+ref table Date
+ref table LocalDateTable_77fe46dd-4108-42f0-aaa4-146d73ce6834
+ref table 'Just Geography'
+
+ref cultureInfo en-US
+

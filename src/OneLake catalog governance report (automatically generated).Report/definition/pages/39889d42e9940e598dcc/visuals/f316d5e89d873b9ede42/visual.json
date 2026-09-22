@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "f316d5e89d873b9ede42",
+  "position": {
+    "x": 16,
+    "y": 88,
+    "z": 7000,
+    "height": 1074,
+    "width": 1527.944444444448,
+    "tabOrder": 5000
+  },
+  "visualGroup": {
+    "displayName": "Inventory visuals",
+    "groupMode": "ScaleMode"
+  }
+}

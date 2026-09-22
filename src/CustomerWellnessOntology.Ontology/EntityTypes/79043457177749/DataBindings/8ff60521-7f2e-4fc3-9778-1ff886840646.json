@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "8ff60521-7f2e-4fc3-9778-1ff886840646",
+  "dataBindingConfiguration": {
+    "dataBindingType": "TimeSeries",
+    "timestampColumnName": "ObservationDate",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "BMI",
+        "targetPropertyId": "7118251786159904815"
+      },
+      {
+        "sourceColumnName": "CustomerID",
+        "targetPropertyId": "7118251789523199491"
+      },
+      {
+        "sourceColumnName": "ExerciseMinutes",
+        "targetPropertyId": "7118251790182374859"
+      },
+      {
+        "sourceColumnName": "LifeSatisfaction",
+        "targetPropertyId": "7118251786528240131"
+      },
+      {
+        "sourceColumnName": "ObservationDate",
+        "targetPropertyId": "7118251789857873191"
+      },
+      {
+        "sourceColumnName": "ObservationID",
+        "targetPropertyId": "7118251789578995099"
+      },
+      {
+        "sourceColumnName": "SleepHours",
+        "targetPropertyId": "7118251788371477650"
+      },
+      {
+        "sourceColumnName": "Steps",
+        "targetPropertyId": "7118251789153817390"
+      },
+      {
+        "sourceColumnName": "StressScore",
+        "targetPropertyId": "7118251787908771110"
+      },
+      {
+        "sourceColumnName": "WaterIntakeLiters",
+        "targetPropertyId": "7118251787207226081"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "c6c07669-c821-9c5f-478d-1fccf8300747",
+      "sourceTableName": "wellness_observations",
+      "sourceSchema": "ontology_demo"
+    }
+  }
+}

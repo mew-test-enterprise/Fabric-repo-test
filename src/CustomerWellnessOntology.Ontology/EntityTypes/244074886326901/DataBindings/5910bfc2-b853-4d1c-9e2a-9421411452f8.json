@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "5910bfc2-b853-4d1c-9e2a-9421411452f8",
+  "dataBindingConfiguration": {
+    "dataBindingType": "TimeSeries",
+    "timestampColumnName": "ActivityDate",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "ActivityDate",
+        "targetPropertyId": "7124510321776447563"
+      },
+      {
+        "sourceColumnName": "ActivityID",
+        "targetPropertyId": "7124510321948238448"
+      },
+      {
+        "sourceColumnName": "ActivityType",
+        "targetPropertyId": "7124510321781925370"
+      },
+      {
+        "sourceColumnName": "CaloriesBurned",
+        "targetPropertyId": "7124510318254091893"
+      },
+      {
+        "sourceColumnName": "CustomerID",
+        "targetPropertyId": "7124510318486430380"
+      },
+      {
+        "sourceColumnName": "DurationMinutes",
+        "targetPropertyId": "7124510319005990324"
+      },
+      {
+        "sourceColumnName": "Intensity",
+        "targetPropertyId": "7124510321857136339"
+      },
+      {
+        "sourceColumnName": "RecordedBy",
+        "targetPropertyId": "7124510320724400665"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "c6c07669-c821-9c5f-478d-1fccf8300747",
+      "sourceTableName": "activities",
+      "sourceSchema": "ontology_demo"
+    }
+  }
+}

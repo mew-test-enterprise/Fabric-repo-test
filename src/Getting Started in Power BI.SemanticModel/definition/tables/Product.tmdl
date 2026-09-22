@@ -1,0 +1,146 @@
+table Product
+	lineageTag: e5d2ef6d-20f3-4a04-8d2a-22e6d51a795d
+
+	measure Sales2020 = CALCULATE(SUM('Product'[Sales]), 'Product'[Year] = 2020)
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 69514fb1-7678-4b34-91e3-9c9646f8ac55
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	measure Sales2021 = CALCULATE(SUM('Product'[Sales]), 'Product'[Year] = 2021)
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: a616f312-1d7a-4871-871a-de7a8caaf737
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	measure Sales2022 = CALCULATE(SUM('Product'[Sales]), 'Product'[Year] = 2022)
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: e9ad686b-93d5-47e7-9c1d-ecdae1c7ae5e
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	measure 'Monthly Sales Label' = "Monthly Sales in " & AVERAGE('Product'[Year])
+		lineageTag: 52341e91-d380-45d7-b1bd-f6835088da1a
+
+	measure 'Category in a Year Label' = VALUES('Product'[Product Category]) & " Summary in " & AVERAGE('Product'[Year])
+		lineageTag: f818b7ff-a416-4b64-93ad-ae4c9a8f56dd
+
+	measure 'Profit ($)' = SUM('Product'[Margin])
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 19e2f707-ad5b-4283-a297-d1c7ce394215
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column 'Product Category'
+		dataType: string
+		lineageTag: 2d16b24e-b8e8-4638-8916-a1907182bc0f
+		summarizeBy: none
+		sourceColumn: Product Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 936ab4f9-7de2-439e-a9d7-bdb7ecc3f1c9
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	column Sales
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 9ef89ea9-6bc9-45d6-9f5f-2b14c3e68384
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column Cost
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: bdcae8fb-2c7c-4999-a6c0-c7a7625dd1e4
+		summarizeBy: sum
+		sourceColumn: Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-CA"}
+
+	column Product
+		dataType: string
+		lineageTag: 63e9e806-f078-4b5d-b527-160bf9e0bd8d
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Margin
+		dataType: decimal
+		formatString: $#,##0.00;($#,##0.00)
+		lineageTag: 36e6f2db-ab6a-4071-9568-7970095772ce
+		summarizeBy: sum
+		sourceColumn: Margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_ChangedProperties = ["FormatString"]
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column Date = 'Product'[Year] & " - " & product[month]
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: f023f830-0284-4c7f-bd66-6b0f2618e2a4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_ChangedProperties = ["DataType","FormatString"]
+
+	column 'Month Name' = FORMAT('Product'[Date], "mmm")
+		lineageTag: 6f459a51-753f-4595-9539-f9d06c7f6dc7
+		summarizeBy: none
+		sortByColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_ChangedProperties = ["SortByColumn"]
+
+	column Geography
+		dataType: string
+		lineageTag: 7be73062-de50-4ed8-a9c6-fddfb5491228
+		summarizeBy: none
+		sourceColumn: Geography
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e353d0f-8640-4605-ad2f-cb5080ac0df9
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Product-9f8ff3cf-098f-497d-b7cb-9d865f6b774c = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("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", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Product Category" = _t, Year = _t, Sales = _t, Cost = _t, Margin = _t, Product = _t, Geography = _t, Month = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Year", Int64.Type}, {"Sales", Currency.Type}, {"Cost", Currency.Type}, {"Margin", Currency.Type}, {"Month", Int64.Type}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","America","North America",Replacer.ReplaceText,{"Geography"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","North America","N. America",Replacer.ReplaceText,{"Geography"})
+				in
+				    #"Replaced Value1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

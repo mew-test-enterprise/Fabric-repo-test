@@ -1,0 +1,6 @@
+relationship da52fbef-e1c1-d5bb-085f-94ec4bdc8b9d
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'All Item - Data Owner'.'Item ID'
+	toColumn: DataSharesStats.'Item ID'
+

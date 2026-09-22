@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/dataSource/1.0.0/schema.json",
+  "artifactId": "cc4ea81c-c12d-b769-45da-b19206064eb2",
+  "workspaceId": "00000000-0000-0000-0000-000000000000",
+  "dataSourceInstructions": "This ontology models customer wellness and purchasing behavior. Traverse only declared relationship types. Customer is the hub entity. LifestyleProfile, WellnessObservation, Activity, and Purchase connect directly from Customer. Products are reached only through Customer -> Purchase -> PurchaseItem -> Products. For broad analytical questions, retrieve qualifying CustomerIDs first and perform separate connected aggregations.",
+  "displayName": "CustomerWellnessOntology",
+  "type": "ontology",
+  "userDescription": "Customer wellness ontology with connected profiles, observations, activities, purchases, line items, and products.",
+  "metadata": null,
+  "elements": [
+    {
+      "id": "Customer",
+      "is_selected": true,
+      "display_name": "Customer",
+      "type": "ontology.entity",
+      "description": "Age,City,Country,CustomerID,CustomerName,Gender,JoinDate,MembershipTier,Occupation",
+      "children": []
+    },
+    {
+      "id": "LifestyleProfile",
+      "is_selected": true,
+      "display_name": "LifestyleProfile",
+      "type": "ontology.entity",
+      "description": "AlcoholConsumption,CustomerID,DietType,ProfileID,SmokingStatus,TargetExerciseDays,TargetSleepHours,WellnessGoal",
+      "children": []
+    },
+    {
+      "id": "WellnessObservation",
+      "is_selected": true,
+      "display_name": "WellnessObservation",
+      "type": "ontology.entity",
+      "description": "BMI,CustomerID,ExerciseMinutes,LifeSatisfaction,ObservationDate,SleepHours,Steps,StressScore,WaterIntakeLiters",
+      "children": []
+    },
+    {
+      "id": "Activity",
+      "is_selected": true,
+      "display_name": "Activity",
+      "type": "ontology.entity",
+      "description": "ActivityDate,ActivityType,CaloriesBurned,CustomerID,DurationMinutes,Intensity,RecordedBy",
+      "children": []
+    },
+    {
+      "id": "Purchase",
+      "is_selected": true,
+      "display_name": "Purchase",
+      "type": "ontology.entity",
+      "description": "Channel,CustomerID,PaymentMethod,PurchaseTimestamp,TotalAmount",
+      "children": []
+    },
+    {
+      "id": "PurchaseItem",
+      "is_selected": true,
+      "display_name": "PurchaseItem",
+      "type": "ontology.entity",
+      "description": "LineAmount,ProductID,PurchaseID,PurchaseItemID,Quantity,UnitPrice",
+      "children": []
+    },
+    {
+      "id": "Products",
+      "is_selected": true,
+      "display_name": "Products",
+      "type": "ontology.entity",
+      "description": "Category,IsActive,ProductID,ProductName,UnitPrice",
+      "children": []
+    }
+  ]
+}

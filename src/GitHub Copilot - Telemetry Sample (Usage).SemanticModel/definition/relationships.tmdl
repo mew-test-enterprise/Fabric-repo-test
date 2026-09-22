@@ -1,0 +1,15 @@
+relationship AutoDetected_a08b7980-109a-4973-9048-6e2af3883893
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'GH Copilot - Details'.day
+	toColumn: 'GH Copilot - Summary'.day
+
+relationship f6ad145e-500a-4d7d-899b-36ebb11828cb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'GH Copilot - Summary'.day
+	toColumn: LocalDateTable_f3833181-27c0-42e5-bef6-4f5ee79b8753.Date
+
+relationship 773a4b3b-2737-4f10-903a-f702a1e29325
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Last Refresh'.'Last refresh'
+	toColumn: LocalDateTable_7a5db9ed-af0c-407b-ba15-aefaf35ee6c2.Date
+

@@ -1,0 +1,282 @@
+table VisualsEmptyStateMeasures
+	isHidden
+	lineageTag: 9a96f104-9741-4fde-9616-d3c9c0f8b499
+
+	measure ItemsByLastRefreshEmpty =
+			
+			IF(
+			    CALCULATE(COUNTROWS('All Item - Data Owner'), NOT(ISBLANK('All Item - Data Owner'[Last refresh time]))) = 0,
+			    "You haven’t created any items that refresh",
+			    ""
+			)
+		isHidden
+		lineageTag: 271e6453-41f8-4091-af47-b4c285858986
+
+		changedProperty = IsHidden
+
+	measure ItemsByLastVisitEmpty =
+			
+			IF(
+			    CALCULATE(COUNTROWS('All Item - Data Owner'), NOT(ISBLANK('All Item - Data Owner'[Last visited time]))) = 0,
+			    "It looks like you haven’t accessed any of your items yet",
+			    ""
+			)
+		isHidden
+		lineageTag: 359e8c5e-a619-42a6-a528-635e108f9d9e
+
+		changedProperty = IsHidden
+
+	measure ItemsLastRefreshedMoreThan4MonthsAgoEmpty =
+			
+			IF(
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        DATEDIFF('All Item - Data Owner'[Last refresh time], UTCNOW(), MONTH) >= 4
+			    ) = 0,
+			    "No matching items found",
+			    ""
+			)
+		isHidden
+		lineageTag: edc46d54-13fd-4c36-8f50-b74ec30abfb1
+
+		changedProperty = IsHidden
+
+	measure ItemsLastVisitedMoreThan4MonthsAgoEmpty =
+			
+			IF(
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        DATEDIFF('All Item - Data Owner'[Last visited time], UTCNOW(), MONTH) >= 4
+			    ) = 0,
+			    "No matching items found",
+			    ""
+			)
+		isHidden
+		lineageTag: 3dbc168c-0545-4139-b8cb-5f1a1009b667
+
+		changedProperty = IsHidden
+
+	measure ItemsPerSensitivityLabelEmpty =
+			
+			IF(
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        'All Item - Data Owner'[Label name] <> "No Label"
+			    ) > 0,
+			    "",
+			    "None of your items have sensitivity labels"
+			)
+		isHidden
+		lineageTag: a66f818f-9c13-4d93-bb3d-4fd80eaf1e34
+
+		changedProperty = IsHidden
+
+	measure UnlabeledItemsThatWereRefreshedLastMonthEmpty = ```
+			
+			VAR UnlabeledRefreshedLastMonthCount =
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        'All Item - Data Owner'[Label name] = "No Label" &&
+			        NOT(ISBLANK('All Item - Data Owner'[Last refresh time])) &&
+			        DATEDIFF('All Item - Data Owner'[Last refresh time], UTCNOW(), MONTH) <= 1
+			    )
+			RETURN
+			IF(
+			    UnlabeledRefreshedLastMonthCount = 0,
+			    "No matching items found",
+			    ""
+			)
+			
+			```
+		isHidden
+		lineageTag: 32a0f2c2-000c-47f6-b791-127296d087f6
+
+		changedProperty = IsHidden
+
+	measure UnlabeledItemsThatWereVisitedLastMonthEmpty = ```
+			
+			VAR UnlabeledVisitedLastMonthCount =
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        'All Item - Data Owner'[Label name] = "No Label" &&
+			        NOT(ISBLANK('All Item - Data Owner'[Last visited time])) &&
+			        DATEDIFF('All Item - Data Owner'[Last visited time], UTCNOW(), MONTH) <= 1
+			    )
+			RETURN
+			IF(
+			    UnlabeledVisitedLastMonthCount = 0,
+			    "No matching items found",
+			    ""
+			)
+			
+			```
+		isHidden
+		lineageTag: 0ca2f504-a371-427d-b0df-b62f337a204f
+
+		changedProperty = IsHidden
+
+	measure UnlabeledItemsEmpty = ```
+			
+			IF(
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        'All Item - Data Owner'[Label name] = "No Label"
+			    ) = 0,
+			    "All your items have sensitivity labels",
+			    ""
+			)
+			
+			```
+		isHidden
+		lineageTag: 3070ded6-54d6-4c0f-bf88-068a0be4aaca
+
+		changedProperty = IsHidden
+
+	measure UnendorsedItemsEmpty = ```
+			
+			IF(
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        NOT('All Item - Data Owner'[Endorsement] IN { "Promoted", "Certified", "Master Data" })
+			    ) = 0,
+			    "No matching items found",
+			    ""
+			)
+			
+			```
+		isHidden
+		lineageTag: bfc4f6f4-b2c4-4a5c-9cd0-02402b37a14d
+
+		changedProperty = IsHidden
+
+	measure EndorsedWithoutDescriptionItemsEmpty = ```
+			
+			IF(
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        'All Item - Data Owner'[Endorsement] IN { "Promoted", "Certified", "Master Data" } &&
+			        (ISBLANK('All Item - Data Owner'[Description]) || LEN('All Item - Data Owner'[Description]) = 0)
+			    ) = 0,
+			    "Your endorsed items all have a description ",
+			    ""
+			)
+			
+			
+			```
+		isHidden
+		lineageTag: fce0ad5c-fe5a-43aa-b5ef-62adb62b17e5
+
+		changedProperty = IsHidden
+
+	measure ItemsWithoutDescriptionEmpty = ```
+			
+			IF(
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        ISBLANK('All Item - Data Owner'[Description]) || LEN('All Item - Data Owner'[Description]) = 0
+			    ) = 0,
+			    "All your items have a description",
+			    ""
+			)
+			
+			```
+		isHidden
+		lineageTag: 8363feb1-2062-48d4-a247-a8f522628a56
+
+		changedProperty = IsHidden
+
+	measure ItemsWithTagsEmpty = ```
+			
+			IF(
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        'All Item - Data Owner'[HasTags] = TRUE()
+			    ) = 0,
+			    "None of your items have tags",
+			    ""
+			)
+			
+			```
+		isHidden
+		lineageTag: 08441bbe-85fe-4865-be7b-505860cf7cd4
+
+		changedProperty = IsHidden
+
+	measure ItemsMissingBothDescriptionAndTagsEmpty = ```
+			
+			IF(
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        (ISBLANK('All Item - Data Owner'[Description]) || LEN('All Item - Data Owner'[Description]) = 0) &&
+			        ('All Item - Data Owner'[HasTags] = FALSE() || ISBLANK('All Item - Data Owner'[HasTags]))
+			    ) = 0,
+			    "No matching items found ",
+			    ""
+			)
+			
+			```
+		isHidden
+		lineageTag: 1622e040-12b8-45b7-b065-e421c04169a2
+
+		changedProperty = IsHidden
+
+	measure ItemsEmpty =
+			
+			IF(
+			    'Measure'[Item count] = 0,
+			    "You haven’t created any items",
+			    ""
+			)
+		isHidden
+		lineageTag: 1d7e0684-2469-4171-84f2-183f8bfaf157
+
+		changedProperty = IsHidden
+
+	measure UntaggedItemsEmpty = ```
+			
+			IF(
+			    CALCULATE(
+			        COUNTROWS('All Item - Data Owner'),
+			        'All Item - Data Owner'[HasTags] = FALSE()
+			    ) = 0,
+			    "All your items are tagged",
+			    ""
+			)
+			
+			```
+		isHidden
+		lineageTag: ab246faa-2959-4e21-bb1b-66f35820f8a0
+
+		changedProperty = IsHidden
+
+	measure FailedRefreshItemsEmpty =
+			
+			IF(
+			    [#FailedRefreshItems] = 0,
+			    "No items failed to be refreshed",
+			    ""
+			)
+		isHidden
+		lineageTag: 1d107b05-302f-49ac-806b-216cda94d20b
+
+		changedProperty = IsHidden
+
+	partition VisualsEmptyStateMeasures = m
+		mode: import
+		queryGroup: Measures
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				    //#"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				
+				in
+				    #"Removed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "cb2e685b695cd38cad00",
+  "position": {
+    "x": 17,
+    "y": 175.55555555555554,
+    "z": 9640,
+    "height": 396.66666666666669,
+    "width": 225.77777777777777,
+    "tabOrder": 6000
+  },
+  "visualGroup": {
+    "displayName": "Inventory slicers",
+    "groupMode": "ScaleMode"
+  }
+}

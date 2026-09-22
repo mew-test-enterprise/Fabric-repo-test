@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "OneLake catalog governance report (automatically generated)",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "548664df-4583-9e89-4b91-8e6e3408d571"
+  }
+}

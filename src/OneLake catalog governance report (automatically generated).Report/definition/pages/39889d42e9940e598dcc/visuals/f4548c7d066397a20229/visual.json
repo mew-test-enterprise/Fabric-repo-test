@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "f4548c7d066397a20229",
+  "position": {
+    "x": 16,
+    "y": 1916,
+    "z": 3000,
+    "height": 59.593750238414941,
+    "width": 988.75,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "Discover text",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "09c739b34101dce5c6bc",
+  "position": {
+    "x": 217,
+    "y": 1314,
+    "z": 4500,
+    "height": 307.55555555555543,
+    "width": 1195.2626262626261,
+    "tabOrder": -5001
+  },
+  "visualGroup": {
+    "displayName": "Sensitivity info",
+    "groupMode": "ScaleMode"
+  }
+}

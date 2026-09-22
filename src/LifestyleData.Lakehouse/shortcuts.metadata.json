@@ -1,0 +1,38 @@
+[
+  {
+    "name": "lifestyle_data",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dbo/lifestyle_data",
+        "itemId": "f9172762-8728-4e97-845d-1a6cf1989f33",
+        "workspaceId": "e1460756-8da2-44e0-9ec6-a02008ed0ec8"
+      }
+    }
+  },
+  {
+    "name": "mk_purchases_100rows",
+    "path": "/Tables/customer_history",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/customer_history/mk_purchases_100rows",
+        "itemId": "f9172762-8728-4e97-845d-1a6cf1989f33",
+        "workspaceId": "e1460756-8da2-44e0-9ec6-a02008ed0ec8"
+      }
+    }
+  },
+  {
+    "name": "SourceFiles",
+    "path": "/Files",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Files",
+        "itemId": "f9172762-8728-4e97-845d-1a6cf1989f33",
+        "workspaceId": "e1460756-8da2-44e0-9ec6-a02008ed0ec8"
+      }
+    }
+  }
+]

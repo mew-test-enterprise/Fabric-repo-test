@@ -1,0 +1,4016 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "3.5.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "GH_copilot__summary": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Summary"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "GH copilot - summary": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "GH copilot summary": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "summary": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "copilot summary": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "gh copilot - synopsis": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "gh copilot - explanation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "gh copilot - extraction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "gh copilot - summarisation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "gh copilot synopsis": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "gh copilot explanation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "gh copilot extraction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "gh copilot summarisation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "copilot synopsis": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "copilot explanation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Summary",
+			          "ConceptualProperty": "day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary.total_suggestions_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Summary",
+			          "ConceptualProperty": "total_suggestions_count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total suggestions count": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total suggestion count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "total_suggestions_count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "total suggestion amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "aggregate suggestion count": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall suggestion count": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary.total_acceptances_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Summary",
+			          "ConceptualProperty": "total_acceptances_count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total acceptances count": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total acceptance count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "total_acceptances_count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "total acceptance amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "aggregate acceptance count": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall acceptance count": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary.total_line_suggested": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Summary",
+			          "ConceptualProperty": "total_lines_suggested"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total line suggested": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_lines_suggested": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "aggregate line suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall line suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total streak suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total stroke suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total stripe suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total contour suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total mark suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total connection suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "total link suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        },
+			        {
+			          "total route suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary.total_line_accepted": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Summary",
+			          "ConceptualProperty": "total_lines_accepted"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total line accepted": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_lines_accepted": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "aggregate line accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall line accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total streak accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total stroke accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total stripe accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total contour accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total mark accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total connection accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "total link accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        },
+			        {
+			          "total route accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary.total_active_user": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Summary",
+			          "ConceptualProperty": "total_active_users"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total active user": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_active_users": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "user": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "aggregate active user": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall active user": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total active operator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total active worker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total active employer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total active manipulator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total active handler": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total active manager": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "operator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "worker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary.total_chat_acceptance": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Summary",
+			          "ConceptualProperty": "total_chat_acceptances"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total chat acceptance": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_chat_acceptances": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "acceptance": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "chat acceptance": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "aggregate chat acceptance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall chat acceptance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total chat reception": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "chat reception": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "total chat receipt": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat taking": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat getting": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat receiving": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "reception": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "chat receipt": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary.total_chat_turn": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Summary",
+			          "ConceptualProperty": "total_chat_turns"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total chat turn": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_chat_turns": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "turn": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "chat turn": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "aggregate chat turn": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall chat turn": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total chat opportunity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "chat opportunity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "total chat go": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat try": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat shot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat chance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat crack": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "opportunity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary.total_active_chat_user": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Summary",
+			          "ConceptualProperty": "total_active_chat_users"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total active chat user": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_active_chat_users": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "user": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "chat user": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "active chat user": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "aggregate active chat user": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "overall active chat user": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "total active chat operator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "total active chat worker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "total active chat employer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "total active chat manipulator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "total active chat handler": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "total active chat manager": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "active chat operator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "active chat worker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary.breakdown": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Summary",
+			          "ConceptualProperty": "breakdown"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "breakdown": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "failure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "cessation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "interruption": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "collapse": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "halt": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "break": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "analysis": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "itemization": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "classification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "dissection": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "GH copilot - detail": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "GH copilot detail": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "detail": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "copilot detail": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "gh copilot - aspect": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "gh copilot - element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "gh copilot - fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "gh copilot aspect": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "gh copilot element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "gh copilot fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "copilot aspect": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "copilot element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "copilot fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "gh copilot - part": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Date": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.total_suggestions_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "total_suggestions_count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total suggestions count": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total suggestion count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "total_suggestions_count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "total suggestion amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "aggregate suggestion count": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall suggestion count": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.total_acceptances_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "total_acceptances_count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total acceptances count": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total acceptance count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "total_acceptances_count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "total acceptance amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "aggregate acceptance count": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall acceptance count": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.total_line_suggested": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "total_lines_suggested"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total line suggested": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_lines_suggested": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "aggregate line suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall line suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total streak suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total stroke suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total stripe suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total contour suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total mark suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total connection suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "total link suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        },
+			        {
+			          "total route suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.total_line_accepted": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "total_lines_accepted"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total line accepted": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_lines_accepted": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "aggregate line accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall line accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total streak accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total stroke accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total stripe accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total contour accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total mark accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total connection accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.482
+			          }
+			        },
+			        {
+			          "total link accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        },
+			        {
+			          "total route accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.468
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.total_active_user": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "total_active_users"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total active user": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_active_users": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "user": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "aggregate active user": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall active user": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total active operator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total active worker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total active employer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total active manipulator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total active handler": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "total active manager": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "operator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "worker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.total_chat_acceptance": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "total_chat_acceptances"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total chat acceptance": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_chat_acceptances": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "acceptance": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "chat acceptance": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "aggregate chat acceptance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall chat acceptance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total chat reception": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "chat reception": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "total chat receipt": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat taking": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat getting": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat receiving": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "reception": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "chat receipt": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.total_chat_turn": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "total_chat_turns"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total chat turn": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_chat_turns": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "turn": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "chat turn": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "aggregate chat turn": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "overall chat turn": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "total chat opportunity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "chat opportunity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "total chat go": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat try": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat shot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat chance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "total chat crack": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "opportunity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.total_active_chat_user": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "total_active_chat_users"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total active chat user": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "total_active_chat_users": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "user": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "chat user": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "active chat user": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "aggregate active chat user": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "overall active chat user": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "total active chat operator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "total active chat worker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "total active chat employer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "total active chat manipulator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "total active chat handler": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "total active chat manager": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "active chat operator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "active chat worker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.language": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "language"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "language": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "verbal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "idiom": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "lingo": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "dialect": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "patois": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "tongue": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "vernacular": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "argot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "jargon": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.editor": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "editor"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "editor": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "publishing supervisor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "copyreader": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "corrector": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "cutter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "subeditor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "checker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.suggestions_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "suggestions_count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "suggestions count": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "suggestion count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "suggestions_count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "suggestion amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "Prompt Suggested": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.acceptances_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "acceptances_count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "acceptances count": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "acceptance count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "acceptances_count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "acceptance amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "Prompt Accepted": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.line_suggested": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "lines_suggested"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "line suggested": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "lines_suggested": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "streak suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "stroke suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "stripe suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "contour suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "mark suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "connection suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "link suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "route suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "track suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "course suggested": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "Lines Suggested": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.line_accepted": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "lines_accepted"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "line accepted": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "lines_accepted": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "streak accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "stroke accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "stripe accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "contour accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "mark accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "connection accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "link accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "route accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "track accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "course accepted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "Lines Accepted": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail.active_user": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GH Copilot - Details",
+			          "ConceptualProperty": "active_users"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "active user": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "active_users": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "user": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "active operator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "active worker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "active employer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "active manipulator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "active handler": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "active manager": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "operator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "worker": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "employer": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "manipulator": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        }
+			      ]
+			    },
+			    "github_copilot_telemetry_data.prompts_shown": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GitHub Copilot Telemetry Data",
+			          "ConceptualProperty": "Prompts_Shown"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "github_copilot_telemetry_data.prompts_accepted": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "GitHub Copilot Telemetry Data",
+			          "ConceptualProperty": "Prompts_Accepted"
+			        }
+			      },
+			      "State": "Generated"
+			    }
+			  },
+			  "Relationships": {
+			    "GH_copilot__summary_total_active_user_use_GH_copilot__summary": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Summary"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__summary.total_active_user": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary.total_active_user"
+			          }
+			        },
+			        "GH_copilot__summary": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary.total_active_user"
+			            },
+			            "Verbs": [
+			              {
+			                "use": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "GH_copilot__summary"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "total_active_users_use_GH_copilot__summaries"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary.total_active_user"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "total_active_users_have_GH_copilot__summaries"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary.total_active_user"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__summaries_have_total_active_users"
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary_total_active_chat_user_use_GH_copilot__summary": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Summary"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__summary.total_active_chat_user": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary.total_active_chat_user"
+			          }
+			        },
+			        "GH_copilot__summary": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary.total_active_chat_user"
+			            },
+			            "Verbs": [
+			              {
+			                "use": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "GH_copilot__summary"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "total_active_chat_users_use_GH_copilot__summaries"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary.total_active_chat_user"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "total_active_chat_users_have_GH_copilot__summaries"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary.total_active_chat_user"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__summaries_have_total_active_chat_users"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_total_active_user_use_GH_copilot__detail": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail.total_active_user": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.total_active_user"
+			          }
+			        },
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail.total_active_user"
+			            },
+			            "Verbs": [
+			              {
+			                "use": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "GH_copilot__detail"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "total_active_users_use_GH_copilot__details"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail.total_active_user"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "total_active_users_have_GH_copilot__details"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.total_active_user"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_total_active_users"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_total_active_chat_user_use_GH_copilot__detail": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail.total_active_chat_user": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.total_active_chat_user"
+			          }
+			        },
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail.total_active_chat_user"
+			            },
+			            "Verbs": [
+			              {
+			                "use": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "GH_copilot__detail"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "total_active_chat_users_use_GH_copilot__details"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail.total_active_chat_user"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "total_active_chat_users_have_GH_copilot__details"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.total_active_chat_user"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_total_active_chat_users"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_editor_edit_GH_copilot__detail": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail.editor": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.editor"
+			          }
+			        },
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail.editor"
+			            },
+			            "Verbs": [
+			              {
+			                "edit": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "GH_copilot__detail"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "editors_edit_GH_copilot__details"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail.editor"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "editors_have_GH_copilot__details"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.editor"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_editors"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_active_user_use_GH_copilot__detail": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail.active_user": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.active_user"
+			          }
+			        },
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail.active_user"
+			            },
+			            "Verbs": [
+			              {
+			                "use": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "GH_copilot__detail"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "active_users_use_GH_copilot__details"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail.active_user"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "active_users_have_GH_copilot__details"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.active_user"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_active_users"
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary_has_day": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Summary"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__summary": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary"
+			          }
+			        },
+			        "GH_copilot__summary.day": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__summaries_have_days"
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary_has_total_suggestions_count": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Summary"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__summary": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary"
+			          }
+			        },
+			        "GH_copilot__summary.total_suggestions_count": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary.total_suggestions_count"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary.total_suggestions_count"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__summaries_have_total_suggestions_counts"
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary_has_total_acceptances_count": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Summary"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__summary": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary"
+			          }
+			        },
+			        "GH_copilot__summary.total_acceptances_count": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary.total_acceptances_count"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary.total_acceptances_count"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__summaries_have_total_acceptances_counts"
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary_has_total_line_suggested": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Summary"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__summary": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary"
+			          }
+			        },
+			        "GH_copilot__summary.total_line_suggested": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary.total_line_suggested"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary.total_line_suggested"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__summaries_have_total_line_suggested"
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary_has_total_line_accepted": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Summary"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__summary": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary"
+			          }
+			        },
+			        "GH_copilot__summary.total_line_accepted": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary.total_line_accepted"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary.total_line_accepted"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__summaries_have_total_line_accepted"
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary_has_total_chat_acceptance": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Summary"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__summary": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary"
+			          }
+			        },
+			        "GH_copilot__summary.total_chat_acceptance": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary.total_chat_acceptance"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary.total_chat_acceptance"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__summaries_have_total_chat_acceptances"
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary_has_total_chat_turn": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Summary"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__summary": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary"
+			          }
+			        },
+			        "GH_copilot__summary.total_chat_turn": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary.total_chat_turn"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary.total_chat_turn"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__summaries_have_total_chat_turns"
+			        }
+			      ]
+			    },
+			    "GH_copilot__summary_has_breakdown": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Summary"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__summary": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary"
+			          }
+			        },
+			        "GH_copilot__summary.breakdown": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary.breakdown"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary.breakdown"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__summaries_have_breakdowns"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_total_suggestions_count": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__detail.total_suggestions_count": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.total_suggestions_count"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.total_suggestions_count"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_total_suggestions_counts"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_total_acceptances_count": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__detail.total_acceptances_count": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.total_acceptances_count"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.total_acceptances_count"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_total_acceptances_counts"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_total_line_suggested": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__detail.total_line_suggested": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.total_line_suggested"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.total_line_suggested"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_total_line_suggested"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_total_line_accepted": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__detail.total_line_accepted": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.total_line_accepted"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.total_line_accepted"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_total_line_accepted"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_total_chat_acceptance": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__detail.total_chat_acceptance": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.total_chat_acceptance"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.total_chat_acceptance"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_total_chat_acceptances"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_total_chat_turn": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__detail.total_chat_turn": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.total_chat_turn"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.total_chat_turn"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_total_chat_turns"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_language": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__detail.language": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.language"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.language"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_languages"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_suggestions_count": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__detail.suggestions_count": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.suggestions_count"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.suggestions_count"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_suggestions_counts"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_acceptances_count": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__detail.acceptances_count": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.acceptances_count"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.acceptances_count"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_acceptances_counts"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_line_suggested": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__detail.line_suggested": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.line_suggested"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.line_suggested"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_line_suggested"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_line_accepted": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__detail.line_accepted": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail.line_accepted"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail.line_accepted"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_line_accepted"
+			        }
+			      ]
+			    },
+			    "GH_copilot__detail_has_GH_copilot__summary": {
+			      "Binding": {
+			        "ConceptualEntity": "GH Copilot - Details"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "GH_copilot__detail": {
+			          "Target": {
+			            "Entity": "GH_copilot__detail"
+			          }
+			        },
+			        "GH_copilot__summary": {
+			          "Target": {
+			            "Entity": "GH_copilot__summary"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__detail"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__summary"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__details_have_GH_copilot__summaries"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "GH_copilot__summary"
+			            },
+			            "Object": {
+			              "Role": "GH_copilot__detail"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "GH_copilot__summaries_have_GH_copilot__details"
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

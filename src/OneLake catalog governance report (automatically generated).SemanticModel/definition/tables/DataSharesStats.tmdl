@@ -1,0 +1,85 @@
+table DataSharesStats
+	isHidden
+	lineageTag: a43701da-68b5-497a-b886-891a525ea9b6
+
+	column 'Item ID'
+		dataType: string
+		isHidden
+		lineageTag: 43198144-4844-4494-b047-b6c738e97f52
+		summarizeBy: none
+		sourceColumn: Item ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shares Count'
+		dataType: string
+		isHidden
+		lineageTag: 6c75b6ab-ae5e-45a1-877d-23e753d0a832
+		summarizeBy: none
+		sourceColumn: Shares Count
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Revoked Shares Count'
+		dataType: string
+		isHidden
+		lineageTag: 99e26ee5-1556-43e8-b6e0-1cfa93955a5d
+		summarizeBy: none
+		sourceColumn: Revoked Shares Count
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DataSharesStats = m
+		mode: import
+		queryGroup: Fact
+		source = ```
+				let
+				    // Define the endpoint
+				    endpoint = "/metadata/governanceData/dataSharesStatsByOwner",
+				 
+				    requestId = "550e8400-e29b-41d4-a716-446655440000",
+				 
+				    // Make the GET request using MetricsDataConnectorRequest
+				    response = MetricsDataConnector.GetAPIData(Host, endpoint, requestId ),
+				 
+				    // Define an empty table with expected columns
+				    EmptyTable = Table.FromRecords({
+				        [#"Item ID" = "", #"Shares Count" = 0, #"Revoked Shares Count" = 0]
+				    }),
+				 
+				    finalEmptyTable = Table.SelectRows(EmptyTable, each [Item ID] <> ""),
+				 
+				    // Convert response into a table
+				    result = 
+				        if List.IsEmpty(response) then 
+				            finalEmptyTable
+				        else 
+				            Table.FromList(response, Splitter.SplitByNothing(), {"Column1"}),
+				 
+				    #"Expanded Data" = 
+				        if Table.IsEmpty(result) then 
+				            finalEmptyTable 
+				        else 
+				            Table.ExpandRecordColumn(result, "Column1", 
+				                {"itemObjectId", "sharesCount", "revokedSharesCount"}, 
+				                {"Item ID", "Shares Count", "Revoked Shares Count"}
+				            ),
+				 
+				    // Remove unwanted rows
+				    finalTable = Table.SelectRows(#"Expanded Data", each [Item ID] <> "")
+				in
+				    finalTable
+				```
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

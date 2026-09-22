@@ -1,0 +1,56 @@
+table Date
+	lineageTag: 1638ac4b-56b9-4540-a936-3614be5a072a
+
+	column Date
+		formatString: Short Date
+		lineageTag: 88f5b7ae-468d-46d1-a780-a5d0fdd52ba0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 4d9aa176-e13f-4297-8d62-0673ca0bb7f9
+			defaultHierarchy: LocalDateTable_77fe46dd-4108-42f0-aaa4-146d73ce6834.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_ChangedProperties = ["DataType","FormatString"]
+
+	column Year = YEAR('Date'[Date])
+		formatString: 0
+		lineageTag: 72ec36e7-5757-4fb0-be80-878fff6a4f02
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = MONTH('Date'[Date])
+		formatString: 0
+		lineageTag: 61f0340c-6fb3-4c18-a1f4-5c1d4a1295c9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter = "Q" & QUARTER('Date'[Date])
+		lineageTag: 5edd2957-4fce-41c6-bb9c-27b679272099
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Abbr' = FORMAT('Date'[Date], "mmm")
+		lineageTag: 3f5a3cc6-6023-4090-9784-6549d760db2e
+		summarizeBy: none
+		sortByColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_ChangedProperties = ["SortByColumn"]
+
+	partition Date-f26cbad2-d83c-4266-bc6a-d05679e2b82a = calculated
+		mode: import
+		source = CALENDAR(MIN('Product'[Date]), MAX('Product'[Date]))
+
+	annotation PBI_Id = 21a287f72b4a4caeb0ce279476150356
+

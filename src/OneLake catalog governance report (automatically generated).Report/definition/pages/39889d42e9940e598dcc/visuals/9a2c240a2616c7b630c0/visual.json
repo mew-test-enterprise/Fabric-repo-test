@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "9a2c240a2616c7b630c0",
+  "position": {
+    "x": 16,
+    "y": 1186,
+    "z": 6000,
+    "height": 732.5,
+    "width": 1530,
+    "tabOrder": -3001
+  },
+  "visualGroup": {
+    "displayName": "Line break group",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "GitHub Copilot - Telemetry Sample (Usage)",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5a6c81ab-2266-9621-4717-747cf6a5c3dd"
+  }
+}

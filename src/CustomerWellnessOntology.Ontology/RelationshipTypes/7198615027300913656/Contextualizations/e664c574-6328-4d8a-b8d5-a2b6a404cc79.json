@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/contextualization/1.0.0/schema.json",
+  "id": "e664c574-6328-4d8a-b8d5-a2b6a404cc79",
+  "dataBindingTable": {
+    "workspaceId": "00000000-0000-0000-0000-000000000000",
+    "itemId": "c6c07669-c821-9c5f-478d-1fccf8300747",
+    "sourceTableName": "wellness_observations",
+    "sourceSchema": "ontology_demo",
+    "sourceType": "LakehouseTable"
+  },
+  "sourceKeyRefBindings": [
+    {
+      "sourceColumnName": "CustomerID",
+      "targetPropertyId": "7097648734819787846"
+    }
+  ],
+  "targetKeyRefBindings": [
+    {
+      "sourceColumnName": "ObservationID",
+      "targetPropertyId": "7118251789578995099"
+    }
+  ]
+}

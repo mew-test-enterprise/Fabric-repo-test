@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "30b1d0a7-a631-417d-92a5-0c80891b18ee",
+  "dataBindingConfiguration": {
+    "dataBindingType": "TimeSeries",
+    "timestampColumnName": "PurchaseTimestamp",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "Channel",
+        "targetPropertyId": "7133552986556294100"
+      },
+      {
+        "sourceColumnName": "CustomerID",
+        "targetPropertyId": "7133552985266209743"
+      },
+      {
+        "sourceColumnName": "PaymentMethod",
+        "targetPropertyId": "7133552988009737005"
+      },
+      {
+        "sourceColumnName": "PurchaseID",
+        "targetPropertyId": "7133552985838942694"
+      },
+      {
+        "sourceColumnName": "PurchaseTimestamp",
+        "targetPropertyId": "7133552988872396171"
+      },
+      {
+        "sourceColumnName": "TotalAmount",
+        "targetPropertyId": "7133552988635658996"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "c6c07669-c821-9c5f-478d-1fccf8300747",
+      "sourceTableName": "purchases",
+      "sourceSchema": "ontology_demo"
+    }
+  }
+}

@@ -1,0 +1,1497 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/dataSource/1.0.0/schema.json",
+  "artifactId": "c6c07669-c821-9c5f-478d-1fccf8300747",
+  "workspaceId": "00000000-0000-0000-0000-000000000000",
+  "dataSourceInstructions": null,
+  "displayName": "LifestyleDataLocal",
+  "type": "lakehouse_tables",
+  "userDescription": "Self-contained local lifestyle dataset with 1,000 synthetic records for reliable Data Agent queries.",
+  "metadata": {},
+  "elements": [
+    {
+      "id": "6db98d21-4519-4089-81b5-9a19b7c044dd",
+      "is_selected": false,
+      "display_name": "Schemas",
+      "type": "schema_grouping",
+      "description": null,
+      "children": [
+        {
+          "id": "803f3164-9575-47ab-9c06-c56470027a29",
+          "is_selected": false,
+          "display_name": "ontology_demo",
+          "type": "lakehouse_tables.schema",
+          "description": null,
+          "children": [
+            {
+              "id": "d771a4b5-a6c0-42f6-924a-4896c7161152",
+              "is_selected": false,
+              "display_name": "Tables",
+              "type": "table_grouping",
+              "description": null,
+              "children": [
+                {
+                  "id": "8bdfbb51-973f-4cd0-b69b-1067f44f6ae1",
+                  "is_selected": false,
+                  "display_name": "demo_questions",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "be1a079b-c7a3-481f-a553-420dd3e55513",
+                      "is_selected": true,
+                      "display_name": "Exercise",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "78fd6d49-ab7e-45da-a926-2b6ebd858600",
+                      "is_selected": true,
+                      "display_name": "Question",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "dcd2941f-e6fe-4403-a7ba-8df256a1488c",
+                  "is_selected": false,
+                  "display_name": "relationship_catalog",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "946c36df-8c20-41ef-beed-4628d784456e",
+                      "is_selected": true,
+                      "display_name": "RelationshipName",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "93622014-d4ce-4cf9-b30e-28034ef4a9e8",
+                      "is_selected": true,
+                      "display_name": "OriginEntity",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0a0a3966-bc3d-4478-8891-c4171674d91f",
+                      "is_selected": true,
+                      "display_name": "OriginEntityKey",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8a0363d7-da41-4a75-bfd4-b240fd08ae9e",
+                      "is_selected": true,
+                      "display_name": "TargetEntity",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fe5a1f4a-0597-46e8-921c-fbff2e952315",
+                      "is_selected": true,
+                      "display_name": "TargetEntityKey",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ea74fcf0-5277-40c1-994b-2314222ec8c1",
+                      "is_selected": true,
+                      "display_name": "MappingTable",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "7ac4c195-4482-4a61-9d75-6cc9e4314eee",
+                      "is_selected": true,
+                      "display_name": "OriginMatchColumn",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "3eadbd58-f0fe-4b07-a1cb-4ed4c898206c",
+                      "is_selected": true,
+                      "display_name": "TargetMatchColumn",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "43677433-80e7-4f0a-902f-18e57ea59d66",
+                      "is_selected": true,
+                      "display_name": "Cardinality",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "d4456e67-acee-4eb3-b399-220ee25401e3",
+                  "is_selected": false,
+                  "display_name": "products",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "b660a2f1-6ad5-425e-9171-5f19d8ec21fe",
+                      "is_selected": true,
+                      "display_name": "ProductID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "05cee4fb-1aa2-41e2-b458-ba21fcae6870",
+                      "is_selected": true,
+                      "display_name": "ProductName",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "bbf81750-a9df-42cd-8a21-66c4123430da",
+                      "is_selected": true,
+                      "display_name": "Category",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "3905dc8e-9268-4dc7-aa0f-24a464080338",
+                      "is_selected": true,
+                      "display_name": "UnitPrice",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8b1595a1-fa9d-4c4d-accd-c1eea26dc704",
+                      "is_selected": true,
+                      "display_name": "IsActive",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bit",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "8e05e8ec-dd21-4424-ac42-655486d3d6a5",
+                  "is_selected": false,
+                  "display_name": "customers",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "10a0ed5f-ce76-4a93-8348-bad18a140adf",
+                      "is_selected": true,
+                      "display_name": "CustomerID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "facd5b16-0e41-4ba5-b3d0-afd2ae648529",
+                      "is_selected": true,
+                      "display_name": "CustomerName",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "78aea30e-a761-4731-8f9d-9198f2d24905",
+                      "is_selected": true,
+                      "display_name": "Age",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2e8a0db0-ca5a-49b5-baf8-02e042f211f7",
+                      "is_selected": true,
+                      "display_name": "Gender",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2aa0154a-f732-4b12-9e2e-95d5bf64b9fe",
+                      "is_selected": true,
+                      "display_name": "Country",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2731835a-f6f7-4925-ad3a-35c72620abb9",
+                      "is_selected": true,
+                      "display_name": "City",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "34c50bcc-6d80-4f87-8ab3-2364cbf9839d",
+                      "is_selected": true,
+                      "display_name": "Occupation",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b90a3592-8c42-4caa-8241-579c4a281923",
+                      "is_selected": true,
+                      "display_name": "MembershipTier",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "858bceb1-e403-4d95-9864-583e8ff1edf5",
+                      "is_selected": true,
+                      "display_name": "JoinDate",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "date",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "66988e89-944e-407c-8814-f9a0e8a893fa",
+                  "is_selected": false,
+                  "display_name": "purchase_items",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "03c501c5-d46e-4441-811d-5b6babee37dd",
+                      "is_selected": true,
+                      "display_name": "PurchaseItemID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e8377c4c-3550-4091-a666-9c9595332b51",
+                      "is_selected": true,
+                      "display_name": "PurchaseID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1c6c853a-e13a-43f1-a426-497c55c7a392",
+                      "is_selected": true,
+                      "display_name": "ProductID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b8025c3e-2be1-4abf-829a-9900308bbf07",
+                      "is_selected": true,
+                      "display_name": "Quantity",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b7debeb9-55d4-4ee9-ab85-d53fc32a6f0f",
+                      "is_selected": true,
+                      "display_name": "UnitPrice",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "97aab97c-c9ba-465d-bec7-c71fa069ac65",
+                      "is_selected": true,
+                      "display_name": "LineAmount",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "613b8511-0eb8-4390-a467-8433d5932bea",
+                  "is_selected": false,
+                  "display_name": "purchases",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "a5823522-9c4b-490a-9eb1-85dc2ada403d",
+                      "is_selected": true,
+                      "display_name": "PurchaseID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1b18bc8b-d9ac-4a6f-994f-16b7df0a7a02",
+                      "is_selected": true,
+                      "display_name": "CustomerID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4cbb0766-bc77-468d-bae5-a439d8fdfee7",
+                      "is_selected": true,
+                      "display_name": "PurchaseTimestamp",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "datetime2",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "81afabed-a88b-4713-bbf7-664744dde872",
+                      "is_selected": true,
+                      "display_name": "Channel",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "3a5b1e1f-02b2-4f27-ac7c-336f04f43611",
+                      "is_selected": true,
+                      "display_name": "PaymentMethod",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f6a3e1b4-6123-473b-b6cd-a53d1ea20ea9",
+                      "is_selected": true,
+                      "display_name": "TotalAmount",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "fe90650e-2c2f-43cb-8def-7cc59d53e521",
+                  "is_selected": false,
+                  "display_name": "activities",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "347c5db5-40d0-4262-85c6-dd13f6868565",
+                      "is_selected": true,
+                      "display_name": "ActivityID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "87fd6d11-1766-44d4-8855-ace234a95705",
+                      "is_selected": true,
+                      "display_name": "CustomerID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b443d565-1dea-4bc0-b1a3-aa56b39de10a",
+                      "is_selected": true,
+                      "display_name": "ActivityDate",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "date",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6377ef33-9a14-4e83-b7af-b11eada41e7c",
+                      "is_selected": true,
+                      "display_name": "ActivityType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5f901bb9-1ddc-4e03-8754-70e8072e286a",
+                      "is_selected": true,
+                      "display_name": "DurationMinutes",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0271eca5-06d2-4a9b-8e23-9f36e4dbbb9c",
+                      "is_selected": true,
+                      "display_name": "CaloriesBurned",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ba0b4fff-ddb1-4445-88d6-f452d816b0f9",
+                      "is_selected": true,
+                      "display_name": "Intensity",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1cd64f3a-5d7a-4429-999a-ddf8be2c3563",
+                      "is_selected": true,
+                      "display_name": "RecordedBy",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "883d5a3e-9ac3-4d56-9c1e-e21b8cc7bc05",
+                  "is_selected": false,
+                  "display_name": "lifestyle_profiles",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "e41911fe-62a0-45ab-a075-cedfae2b2eaa",
+                      "is_selected": true,
+                      "display_name": "ProfileID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2934acb4-00fe-467d-ba7b-6e695f908d51",
+                      "is_selected": true,
+                      "display_name": "CustomerID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6291de5b-b88a-4643-942c-688137e06f2e",
+                      "is_selected": true,
+                      "display_name": "DietType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0d88d348-9075-43bb-831a-648ed24bbb64",
+                      "is_selected": true,
+                      "display_name": "SmokingStatus",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e5b679dd-481c-4700-a35c-a6c9dc2ffcb5",
+                      "is_selected": true,
+                      "display_name": "AlcoholConsumption",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2f3dce4a-22bc-4c57-b67f-ebed4c5926aa",
+                      "is_selected": true,
+                      "display_name": "TargetSleepHours",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "3eff5d9d-38dd-4780-ba9b-0d147d472f56",
+                      "is_selected": true,
+                      "display_name": "TargetExerciseDays",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "bc18a38d-ade2-43fa-babf-24266412243f",
+                      "is_selected": true,
+                      "display_name": "WellnessGoal",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "71cdfc5d-4be4-4fce-8058-9d7937a62b0c",
+                  "is_selected": false,
+                  "display_name": "wellness_observations",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "baec3d2a-6dc6-49ba-9b22-95f477b35491",
+                      "is_selected": true,
+                      "display_name": "ObservationID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f1def2b1-0311-4a7a-b0ed-c563a73992c2",
+                      "is_selected": true,
+                      "display_name": "CustomerID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4d45ae9d-28bb-4fc8-aad8-0fe0e4347af6",
+                      "is_selected": true,
+                      "display_name": "ObservationDate",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "date",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "90a69583-7932-4b9f-b88f-7fce67be7e7a",
+                      "is_selected": true,
+                      "display_name": "SleepHours",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e246e224-2764-41f6-90c5-a7db4bd8f64a",
+                      "is_selected": true,
+                      "display_name": "Steps",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9b865af4-8948-4d15-abc3-a0c6681ad372",
+                      "is_selected": true,
+                      "display_name": "ExerciseMinutes",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "026d5561-aa5f-4ed8-a224-7328e70a567b",
+                      "is_selected": true,
+                      "display_name": "WaterIntakeLiters",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f9a29572-2f85-4dfb-80ce-36a6ff3f7b3e",
+                      "is_selected": true,
+                      "display_name": "StressScore",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "564a9d5f-c945-4882-ab03-c97866b80415",
+                      "is_selected": true,
+                      "display_name": "BMI",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9dd90f1c-adab-43b4-9248-17c43534a3a7",
+                      "is_selected": true,
+                      "display_name": "LifeSatisfaction",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ca7d691a-5c4c-44ff-ac63-3912b82670ba",
+          "is_selected": false,
+          "display_name": "dbo",
+          "type": "lakehouse_tables.schema",
+          "description": null,
+          "children": [
+            {
+              "id": "0015d062-85f6-4c61-ad1c-6b71fb27adb3",
+              "is_selected": false,
+              "display_name": "Tables",
+              "type": "table_grouping",
+              "description": null,
+              "children": [
+                {
+                  "id": "e2d42ac1-4938-41bd-a2b0-8b8d37a40dc2",
+                  "is_selected": false,
+                  "display_name": "purchase_items",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "7c0fbad2-31c2-4c1e-9022-5c6f7237b728",
+                      "is_selected": true,
+                      "display_name": "PurchaseItemID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "04e58415-2776-4edf-8bf5-99d8edc99e08",
+                      "is_selected": true,
+                      "display_name": "PurchaseID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f27a5190-befa-42ff-9c9d-7401d995d38f",
+                      "is_selected": true,
+                      "display_name": "ProductID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2cb0919e-f42f-4bf7-b913-b0b94e6c00b7",
+                      "is_selected": true,
+                      "display_name": "Quantity",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "70fe219a-2bfc-4e7a-a55b-4ebfd6d66e00",
+                      "is_selected": true,
+                      "display_name": "UnitPrice",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1c040593-8cc9-41f6-a04f-44faf62f323a",
+                      "is_selected": true,
+                      "display_name": "LineAmount",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "5b2d839d-cf0b-4252-9aaf-fbcd7fbf2f5b",
+                  "is_selected": false,
+                  "display_name": "purchases",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "524221aa-9555-4b00-aeea-89d1d220ae98",
+                      "is_selected": true,
+                      "display_name": "PurchaseID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d092238f-f790-42c3-a33a-f18e49c1428e",
+                      "is_selected": true,
+                      "display_name": "CustomerID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c998fc25-5301-460d-925c-5869963b9c7e",
+                      "is_selected": true,
+                      "display_name": "PurchaseTimestamp",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "datetime2",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1da35ae0-347e-47cb-8f73-5c124859ddd4",
+                      "is_selected": true,
+                      "display_name": "Channel",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0827e0ca-c7d5-4aef-b42a-402897da3f77",
+                      "is_selected": true,
+                      "display_name": "PaymentMethod",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "89990cba-17a7-40fd-9b6f-70785df16679",
+                      "is_selected": true,
+                      "display_name": "TotalAmount",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "7e413e5f-7125-452c-bb40-8a6cce1afe95",
+                  "is_selected": false,
+                  "display_name": "wellness_observations",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "506318ef-6e71-459e-9c57-c76ae2ce2391",
+                      "is_selected": true,
+                      "display_name": "ObservationID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6063d14d-708e-4f19-8193-fb6796daf674",
+                      "is_selected": true,
+                      "display_name": "CustomerID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e07f5635-f1a3-485e-a528-9f5a3c2a3ad1",
+                      "is_selected": true,
+                      "display_name": "ObservationDate",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "date",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fe01e955-50fc-4d30-8e1e-2a5d3a0c66f0",
+                      "is_selected": true,
+                      "display_name": "SleepHours",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d6e3ec80-17f5-4677-9c81-b41a10e71c4a",
+                      "is_selected": true,
+                      "display_name": "Steps",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4349479a-0c8b-4dcb-81ae-fed497db49b1",
+                      "is_selected": true,
+                      "display_name": "ExerciseMinutes",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "f9357a3c-e659-4b83-8eea-debbafd9c7df",
+                      "is_selected": true,
+                      "display_name": "WaterIntakeLiters",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6fe61c64-9aea-489e-9f0f-77135d20f60a",
+                      "is_selected": true,
+                      "display_name": "StressScore",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "15287e03-c094-4ab0-8154-aff9f4c86d0e",
+                      "is_selected": true,
+                      "display_name": "BMI",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "bac7bcc7-8efd-4aee-9b16-c58159c8859d",
+                      "is_selected": true,
+                      "display_name": "LifeSatisfaction",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "a232a3f6-1f79-43a2-8ec6-f6b0a6429cf0",
+                  "is_selected": false,
+                  "display_name": "activities",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "40344529-b5b5-4644-bd2e-86fc3202608a",
+                      "is_selected": true,
+                      "display_name": "ActivityID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a9604d61-6fef-448d-99df-1d72598948b3",
+                      "is_selected": true,
+                      "display_name": "CustomerID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2710ce93-3620-4e33-8b10-10c42b726a0f",
+                      "is_selected": true,
+                      "display_name": "ActivityDate",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "date",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "dab89144-5c41-4020-acec-95d1a5b3ebfe",
+                      "is_selected": true,
+                      "display_name": "ActivityType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0946f6e9-7bc9-420c-8646-0490976dfb18",
+                      "is_selected": true,
+                      "display_name": "DurationMinutes",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b821feb4-b5b8-4bda-a2ad-e40006a84c6b",
+                      "is_selected": true,
+                      "display_name": "CaloriesBurned",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8c995528-0aa7-4c35-9ba6-ce3cf27eac44",
+                      "is_selected": true,
+                      "display_name": "Intensity",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "439f5fb0-ad04-4929-a220-437d1f9d340d",
+                      "is_selected": true,
+                      "display_name": "RecordedBy",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "e6cc34d0-1ffe-45a1-b7f3-5969408a4a5a",
+                  "is_selected": false,
+                  "display_name": "customers",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "6bf5d5c2-a90b-4057-b789-ae75d17cf06e",
+                      "is_selected": true,
+                      "display_name": "CustomerID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "0fd2d140-700e-4c54-a5c1-7c961d934a44",
+                      "is_selected": true,
+                      "display_name": "CustomerName",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "9a50fb55-0df2-4832-be67-21a699d8c86f",
+                      "is_selected": true,
+                      "display_name": "Age",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8c08c7e3-b1c9-4d21-bcf7-4471f96cad36",
+                      "is_selected": true,
+                      "display_name": "Gender",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1595209d-6e4a-4f31-af87-6511857eb3b9",
+                      "is_selected": true,
+                      "display_name": "Country",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5a98a788-84f9-414f-9768-f9b303c61a9b",
+                      "is_selected": true,
+                      "display_name": "City",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "142eab86-50b5-476b-ab79-1229c87e4194",
+                      "is_selected": true,
+                      "display_name": "Occupation",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8f16d72e-bdd1-49ec-bf3b-f56a88e74350",
+                      "is_selected": true,
+                      "display_name": "MembershipTier",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "97f9b4f6-69ac-4157-baeb-90eae44f2564",
+                      "is_selected": true,
+                      "display_name": "JoinDate",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "date",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "6499d6a7-891d-4d6c-925d-48561b17e0e2",
+                  "is_selected": false,
+                  "display_name": "lifestyle_profiles",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "a6c5d053-665e-4cd1-9c29-46855c17ff04",
+                      "is_selected": true,
+                      "display_name": "ProfileID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6172d1e8-aa37-4c33-b428-b09d2da26628",
+                      "is_selected": true,
+                      "display_name": "CustomerID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c3b2678b-327e-4205-8393-d3e029a05e23",
+                      "is_selected": true,
+                      "display_name": "DietType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1f90bcf2-66e3-4312-9a58-04744b6dc776",
+                      "is_selected": true,
+                      "display_name": "SmokingStatus",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ea8c8f66-72fe-4c71-ac1b-711d601a6c58",
+                      "is_selected": true,
+                      "display_name": "AlcoholConsumption",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1f4674f4-c0de-4109-97f0-ef5359b7531f",
+                      "is_selected": true,
+                      "display_name": "TargetSleepHours",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "acf6e4be-4978-49de-b3df-ee390940936f",
+                      "is_selected": true,
+                      "display_name": "TargetExerciseDays",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "55d6011d-66a6-471d-bb2f-ef20c167bb25",
+                      "is_selected": true,
+                      "display_name": "WellnessGoal",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "8809fcef-7b89-4326-a540-bb3d90c4f044",
+                  "is_selected": false,
+                  "display_name": "products",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "d9d39809-d6fa-46bf-a1ed-47531ce14ee6",
+                      "is_selected": true,
+                      "display_name": "ProductID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bigint",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fab396e2-ecb8-4c2c-9fc3-049e03514d65",
+                      "is_selected": true,
+                      "display_name": "ProductName",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "629297ba-ece4-4fbb-ac1a-5faf2deda006",
+                      "is_selected": true,
+                      "display_name": "Category",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "363e32ee-1fba-4771-ba6d-2bf2ef31b518",
+                      "is_selected": true,
+                      "display_name": "UnitPrice",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "4a544b14-3b36-4033-9f13-2a121658387d",
+                      "is_selected": true,
+                      "display_name": "IsActive",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "bit",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "d65ea298-393c-42ae-9114-43b0eb9845c0",
+                  "is_selected": true,
+                  "display_name": "lifestyle_data",
+                  "type": "lakehouse_tables.table",
+                  "description": null,
+                  "children": [
+                    {
+                      "id": "4a4eef98-531f-464f-aaa4-c8f60c2ec393",
+                      "is_selected": true,
+                      "display_name": "PersonID",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "d5878544-eeba-4c78-958a-7d8c69865a86",
+                      "is_selected": true,
+                      "display_name": "Name",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "c5bec111-f075-4347-bdb1-e0203a9ce6c9",
+                      "is_selected": true,
+                      "display_name": "Age",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "80975873-7df6-44cb-894e-fb71a9a0f088",
+                      "is_selected": true,
+                      "display_name": "Gender",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "19824edf-3df6-4130-90ba-03e49d075a45",
+                      "is_selected": true,
+                      "display_name": "Country",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "5d4f52ea-c0c1-4b12-8c66-cbd7cec582ca",
+                      "is_selected": true,
+                      "display_name": "City",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "893a7fc4-0a56-452a-ab2a-adf67dbc5415",
+                      "is_selected": true,
+                      "display_name": "Occupation",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6a757105-b5e7-46a5-aa28-fb8e52248c14",
+                      "is_selected": true,
+                      "display_name": "AnnualIncome",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "fea964f5-9b7f-4007-bf06-e9e62caac314",
+                      "is_selected": true,
+                      "display_name": "EducationLevel",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a155fb4b-1894-4f74-b896-c93321c6f0e0",
+                      "is_selected": true,
+                      "display_name": "MaritalStatus",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "724c0573-91a2-4daa-8940-2d631d55b484",
+                      "is_selected": true,
+                      "display_name": "Children",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "ae1fc89d-c7ce-488b-8f00-ce537cb2c115",
+                      "is_selected": true,
+                      "display_name": "ExerciseFrequency",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e0527f43-5f56-4571-b4ce-bd85bc2e7ab0",
+                      "is_selected": true,
+                      "display_name": "DietType",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "b9f08e47-4fa0-4068-870c-a47ac6b79f16",
+                      "is_selected": true,
+                      "display_name": "SleepHours",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "86ecff29-69e9-4a22-9be3-e0e5a1314e4f",
+                      "is_selected": true,
+                      "display_name": "StressLevel",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "962a3a2e-4892-49db-8ca1-724ac1ec3b3d",
+                      "is_selected": true,
+                      "display_name": "HobbiesCount",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "bd4e6a85-6b7f-49df-9eef-7b95390a34b2",
+                      "is_selected": true,
+                      "display_name": "SocialMediaHours",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "87dc7a21-b795-46dd-9699-47ba7add0e64",
+                      "is_selected": true,
+                      "display_name": "ReadingHours",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "a2919420-4264-415a-a0ba-b16d5874c00a",
+                      "is_selected": true,
+                      "display_name": "WorkHoursPerWeek",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6401e646-8563-4c8a-beea-b9e3754b42bb",
+                      "is_selected": true,
+                      "display_name": "CommuteMinutes",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "cf3be09b-2f1c-4949-af19-342795a00bda",
+                      "is_selected": true,
+                      "display_name": "SmokingStatus",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "6e397f18-abbf-472c-9d5a-c0eac8418697",
+                      "is_selected": true,
+                      "display_name": "AlcoholConsumption",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "adacb3e4-5ebf-4655-99ff-7f976f94edf8",
+                      "is_selected": true,
+                      "display_name": "CoffeeConsumption",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "8a8b1c8a-7d09-46f8-be8e-7fb4ee5d9d75",
+                      "is_selected": true,
+                      "display_name": "WaterIntakeLiters",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "1c12c65a-3301-43e5-9167-ad4f1911fbf0",
+                      "is_selected": true,
+                      "display_name": "BMI",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "float",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "2c25a395-348f-4f91-b56e-6408acbe89dc",
+                      "is_selected": true,
+                      "display_name": "HealthRating",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "varchar",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "02efbd30-454e-4ac9-bc71-296c6fde5d47",
+                      "is_selected": true,
+                      "display_name": "LifeSatisfaction",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    },
+                    {
+                      "id": "e188fca3-07fc-4491-823f-a0d55b308384",
+                      "is_selected": true,
+                      "display_name": "WorkLifeBalance",
+                      "type": "lakehouse_tables.column",
+                      "data_type": "int",
+                      "description": null,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

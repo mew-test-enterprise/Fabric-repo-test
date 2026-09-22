@@ -1,0 +1,21 @@
+relationship 4d9aa176-e13f-4297-8d62-0673ca0bb7f9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.Date
+	toColumn: LocalDateTable_77fe46dd-4108-42f0-aaa4-146d73ce6834.Date
+
+relationship 336461cc-10c1-40dd-b1da-b5790120f217
+	fromColumn: Product.Date
+	toColumn: Date.Date
+
+relationship edc0dee6-c024-4155-bb6b-8208c80bde67
+	fromColumn: Country.Country
+	toColumn: Geography.Country
+
+relationship e8dbc11b-407a-4ad6-afaa-ad823f9c6e73
+	fromColumn: Geography.'Geography Group'
+	toColumn: 'Just Geography'.'Geography Group'
+
+relationship 5e820d14-7a5d-4561-bb50-e74ad44498eb
+	fromColumn: Product.Geography
+	toColumn: 'Just Geography'.'Geography Group'
+

@@ -1,0 +1,154 @@
+table 'GH Copilot - Details'
+	lineageTag: 1dcb9cec-78c2-427d-8e0c-ba264550faed
+
+	column day
+		dataType: dateTime
+		formatString: mmmm d\, yyyy
+		lineageTag: 663b6153-cb64-4f25-8f66-2e0e254f1ab3
+		summarizeBy: none
+		sourceColumn: day
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column total_suggestions_count
+		dataType: string
+		lineageTag: 7f261112-01c8-4f56-a61f-9de40b4bb9e4
+		summarizeBy: none
+		sourceColumn: total_suggestions_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_acceptances_count
+		dataType: string
+		lineageTag: 2100f87d-8fef-4deb-91d7-b36d466c0466
+		summarizeBy: none
+		sourceColumn: total_acceptances_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_lines_suggested
+		dataType: string
+		lineageTag: f46e6fb0-7e0b-4f7b-a754-a89903007aac
+		summarizeBy: none
+		sourceColumn: total_lines_suggested
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_lines_accepted
+		dataType: string
+		lineageTag: a8ce9697-8541-4db2-9df6-89b97b3e3dd2
+		summarizeBy: none
+		sourceColumn: total_lines_accepted
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_active_users
+		dataType: string
+		lineageTag: 2c45c05b-ed5d-4355-96c2-c64c7db6cc5d
+		summarizeBy: none
+		sourceColumn: total_active_users
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_chat_acceptances
+		dataType: string
+		lineageTag: 2ef990c4-59f6-4003-a142-8e7709d07a80
+		summarizeBy: none
+		sourceColumn: total_chat_acceptances
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_chat_turns
+		dataType: string
+		lineageTag: 1a4323b6-d293-44af-8457-886139e7cd71
+		summarizeBy: none
+		sourceColumn: total_chat_turns
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_active_chat_users
+		dataType: string
+		lineageTag: 225f3d93-9328-4b49-98df-2032a1b1bb22
+		summarizeBy: none
+		sourceColumn: total_active_chat_users
+
+		annotation SummarizationSetBy = Automatic
+
+	column language
+		dataType: string
+		lineageTag: bccd8bc3-693a-45b8-acda-4985dd0079b4
+		summarizeBy: none
+		sourceColumn: language
+
+		annotation SummarizationSetBy = Automatic
+
+	column editor
+		dataType: string
+		lineageTag: 09cce41c-a555-4470-afde-673f2bd103be
+		summarizeBy: none
+		sourceColumn: editor
+
+		annotation SummarizationSetBy = Automatic
+
+	column suggestions_count
+		dataType: string
+		lineageTag: af2b6ab5-ec28-4389-ab17-0675e324c60b
+		summarizeBy: none
+		sourceColumn: suggestions_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column acceptances_count
+		dataType: string
+		lineageTag: 64cfe783-c718-41b4-b727-6ed43d395c56
+		summarizeBy: none
+		sourceColumn: acceptances_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column lines_suggested
+		dataType: string
+		lineageTag: 6572a9bd-3d3b-4763-907b-e9a28c3a5ac6
+		summarizeBy: none
+		sourceColumn: lines_suggested
+
+		annotation SummarizationSetBy = Automatic
+
+	column lines_accepted
+		dataType: string
+		lineageTag: afee07d3-6584-4c48-882b-c17d9bcdc4ee
+		summarizeBy: none
+		sourceColumn: lines_accepted
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_users
+		dataType: string
+		lineageTag: d7221ad8-0ab9-4c8a-bfe9-0a1b5d72c186
+		summarizeBy: none
+		sourceColumn: active_users
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'GH Copilot - Details' = m
+		mode: import
+		source =
+				let
+				  Source = Json.Document(File.Contents("C:\Code\copilot-metrics-viewer-power-bi\samples\copilot_usage_response_sample.json")),
+				  #"Converted to table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				  #"Expanded record column" = Table.ExpandRecordColumn(#"Converted to table", "Column1", {"day", "total_suggestions_count", "total_acceptances_count", "total_lines_suggested", "total_lines_accepted", "total_active_users", "total_chat_acceptances", "total_chat_turns", "total_active_chat_users", "breakdown"}, {"day", "total_suggestions_count", "total_acceptances_count", "total_lines_suggested", "total_lines_accepted", "total_active_users", "total_chat_acceptances", "total_chat_turns", "total_active_chat_users", "breakdown"}),
+				  #"Expanded breakdown column" = Table.ExpandListColumn(#"Expanded record column", "breakdown"),
+				  #"Expanded breakdown details" = Table.ExpandRecordColumn(#"Expanded breakdown column", "breakdown", {"language", "editor", "suggestions_count", "acceptances_count", "lines_suggested", "lines_accepted", "active_users"}, {"language", "editor", "suggestions_count", "acceptances_count", "lines_suggested", "lines_accepted", "active_users"})
+				in
+				  #"Expanded breakdown details"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

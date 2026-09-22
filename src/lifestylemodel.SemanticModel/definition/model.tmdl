@@ -1,0 +1,14 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["lifestyle_data"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+ref table lifestyle_data
+

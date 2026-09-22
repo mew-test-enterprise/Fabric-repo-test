@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "c9d7c9b6-f97b-4463-b246-06eab8993f74",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "AlcoholConsumption",
+        "targetPropertyId": "7115032490996520838"
+      },
+      {
+        "sourceColumnName": "CustomerID",
+        "targetPropertyId": "7115032490140383824"
+      },
+      {
+        "sourceColumnName": "DietType",
+        "targetPropertyId": "7115032491309572227"
+      },
+      {
+        "sourceColumnName": "ProfileID",
+        "targetPropertyId": "7115032489904773426"
+      },
+      {
+        "sourceColumnName": "SmokingStatus",
+        "targetPropertyId": "7115032490723463217"
+      },
+      {
+        "sourceColumnName": "TargetExerciseDays",
+        "targetPropertyId": "7115032492784831133"
+      },
+      {
+        "sourceColumnName": "TargetSleepHours",
+        "targetPropertyId": "7115032491913295668"
+      },
+      {
+        "sourceColumnName": "WellnessGoal",
+        "targetPropertyId": "7115032491498567258"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "c6c07669-c821-9c5f-478d-1fccf8300747",
+      "sourceTableName": "lifestyle_profiles",
+      "sourceSchema": "ontology_demo"
+    }
+  }
+}

@@ -1,0 +1,751 @@
+expression Host = "https://wabi-west-us3-a-primary-redirect.analysis.windows.net" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = "Text"]
+	lineageTag: debe178d-72bd-4728-9e30-6b82f2bf5d49
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression DataArtifacts =
+		let
+					querySupportedTypes = { "BusinessEventTopic", "CosmosDB", "DatabricksCatalog", "Datawarehouse", "GraphIndex", "KustoDatabase", "KustoEventHouse", "Lakehouse", "Lakewarehouse", "MetricSet", "Model", "MountedRelationalDatabase", "MountedWarehouse", "PgSQLDbNative", "RuntimeLineage", "SQLDbNative", "SnowflakeDatabase", "SqlAnalyticsEndpoint", "Warehouse", "WarehouseSnapshot" },
+					// Function to get data from a specific page
+				    GetPage = (pageNumber as number) as table =>
+				    let
+				        // Set the endpoint URL
+				        endpoint = "/metadata/datahub/V2/artifacts",
+		
+				        // Set the properties to be sent in the body
+				        body = [
+				            pageSize = 500,
+				            pageNumber = pageNumber,
+				            filter = "myData",
+				            supportedTypes = querySupportedTypes
+				        ],
+		
+				        // Convert body to JSON
+				        jsonBody = Json.FromValue(body),
+		
+				        // Generate requestId for debugging
+				        requestId = "550e8400-e29b-41d4-a716-446655440000",
+		
+				        // Get the data from the datahub API using Web.Contents
+				        response = MetricsDataConnector.GetAPIDataWithBody(Host, endpoint, body, requestId),
+		
+				        // Convert response to table
+				        result = if List.IsEmpty(response) then EmptyTable
+				        else Table.FromList(response, Splitter.SplitByNothing(), null, null, ExtraValues.Error)
+				    in
+				        result,
+		
+				    // Initialize page number and result table
+				    pageNumber = 1,
+				    // Loop to get all pages
+				    GetAllPages = List.Generate(
+				        () => [PageNumber = pageNumber, Data = GetPage(PageNumber)],
+				        each Table.RowCount([Data]) > 1 or Table.FirstValue([Data]) <> "",
+				        each [PageNumber = [PageNumber] + 1, Data = if Table.RowCount([Data]) < 500 then EmptyTable else if [PageNumber] > 50 then EmptyTable else GetPage([PageNumber]+1)],
+				        each [Data]
+				    ),
+		
+				    // Combine all pages into a single table
+				    InitialEmptyTable = Table.FromRecords({[#"Item ID" = "", #"Item name" = "", #"Description" = "", #"Tags" = "", #"artifactTypeIDPBI" = "", #"artifactSubType" = "", #"Workspace ID" = "", #"Workspace name" = "", #"ArtifactTypeFabric" = "", #"Last refresh time" = "", #"LastRefreshFailed" = false, #"Item size MB" = "", #"LastRefreshStatus" = "",  #"Endorsement" = "", #"Last visited time" = "", #"Discoverability" = "", #"Label name" = "", #"Protected label" = "", #"Label applied method" = "", #"Item type" = "", #"DomainObjectId" = "", #"ParentDomainObjectId" = "", #"DomainName" = "", #"ParentDomainName" = "", #"reportType" = "", #"workspaceType" = ""]}),
+				    EmptyTable = Table.TransformColumnTypes(InitialEmptyTable, {{"LastRefreshFailed", type logical} }),
+				    finalTable = Table.Combine(GetAllPages),
+				    transform = if Table.IsEmpty(finalTable) then EmptyTable else
+				    let
+				        #"Expanded Column1" = Table.ExpandRecordColumn(finalTable, "Column1",
+		                		{"artifactObjectId", "artifactTags", "description", "displayName", "artifactType",      "artifactSubType", "workspaceObjectId", "workspaceName",  "artifact", "lastVisitedTimeUTC", "isDiscoverable",  "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTime", "workspaceType"},
+		                		{"Item ID",          "Tags",         "Description", "Item name",   "artifactTypeIDPBI", "artifactSubType", "Workspace ID",      "Workspace name", "artifact", "Last visited time",  "Discoverability", "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTimeEpoc", "workspaceType"})
+				        ,#"Expanded artifact" = Table.ExpandRecordColumn(#"Expanded Column1", "artifact",
+				                {"artifactType",       "sizeInMBs", "lastRefreshStatus", "reportType"},
+				                {"ArtifactTypeFabric", "Item size MB", "LastRefreshStatus", "reportType"})
+				        ,#"Expanded artifactEndorsement" = Table.ExpandRecordColumn(#"Expanded artifact", "artifactEndorsement",
+				                {"stage"},
+				                {"Endorsement"})
+				        ,#"Expanded artifactInformationProtection" = Table.ExpandRecordColumn(#"Expanded artifactEndorsement", "artifactInformationProtection",
+				                {"name",       "hasProtectionPolicy", "triggerType"},
+				                {"Label name", "Protected label",     "Label applied method"})
+				        ,#"Expanded dataDomainArtifactInfo" = Table.ExpandRecordColumn(#"Expanded artifactInformationProtection", "dataDomainArtifactInfo",
+				            {"domainObjectId", "parentObjectId",       "domainDisplayName", "parentDisplayName"},
+				            {"DomainObjectId", "ParentDomainObjectId", "DomainName",        "ParentDomainName"})
+		
+				        ,#"SelectSpecificColumns" = Table.SelectColumns(#"Expanded dataDomainArtifactInfo",
+		            		{"Item ID", "Item name", "Tags", "Description", "artifactTypeIDPBI", "artifactSubType", "Workspace ID", "Workspace name", "ArtifactTypeFabric", "lastRefreshTimeEpoc", "LastRefreshStatus", "Item size MB", "Endorsement", "Last visited time", "Discoverability", "Label name", "Protected label", "Label applied method", "DomainObjectId", "ParentDomainObjectId", "DomainName", "ParentDomainName", "reportType", "workspaceType"})
+		
+				        ,#"AddLastRefreshColumn" = Table.AddColumn(#"SelectSpecificColumns", "Last refresh time", each
+				            let
+				                isEpoc = Text.StartsWith([lastRefreshTimeEpoc], "/Date(") and Text.EndsWith([lastRefreshTimeEpoc], ")/"),
+				                // Extract the numeric part from the string
+				                timestamp = if isEpoc then Number.FromText(Text.Middle([lastRefreshTimeEpoc], 6, Text.Length([lastRefreshTimeEpoc]) - 8)) else -1,
+		
+				                // Convert milliseconds to seconds
+				                timestampInSeconds = timestamp / 1000,
+		
+				                // Convert to a readable date format
+				                readableDate = if timestampInSeconds > 0 then #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, timestampInSeconds) else null
+				            in
+				                readableDate
+				        )
+		
+				        ,#"AddLastRefreshFailedColumn" = Table.AddColumn(#"AddLastRefreshColumn", "LastRefreshFailed", each
+				            ( [artifactTypeIDPBI] = 3 and [LastRefreshStatus] = 4 ) or
+				            ( List.Contains({7, 11}, [artifactTypeIDPBI]) and [LastRefreshStatus] = 2 ),
+				            type logical)
+		
+				        // Remove the original timestamp column if needed
+				        ,#"RemoveEpochColumn"  = Table.RemoveColumns(#"AddLastRefreshFailedColumn", {"lastRefreshTimeEpoc"})
+		
+				        ,#"Changed Type" = Table.TransformColumnTypes(#"RemoveEpochColumn",{{"Last refresh time", type datetime},{"Last visited time", type datetime}})
+				        ,#"Changed Type1" = Table.TransformColumnTypes(#"Changed Type",{{"Last visited time", type date}, {"Protected label", type text}})
+				        ,#"Changed Type2" = Table.TransformColumnTypes(#"Changed Type1",{{"Endorsement", type text}})
+		
+				        ,#"Add Calculated Type" = Table.AddColumn(#"Changed Type2", "Item type", each if [artifactTypeIDPBI] = 3 then "Semantic model" else if [artifactTypeIDPBI] = 1 then "Dashboard" else if [artifactTypeIDPBI] = 2 and [reportType] = 1 then "Paginated report" else if [artifactTypeIDPBI] = 2 then "Report" else if [artifactTypeIDPBI] = 7 then "Dataflow" else if [artifactTypeIDPBI] = 11 and [artifactSubType] = 4 then "Warehouse" else if [artifactTypeIDPBI] = 11  then "Datamart" else if [artifactTypeIDPBI] = 12 then [ArtifactTypeFabric] else null)
+		
+				        ,#"Replaced Value" = Table.ReplaceValue(#"Add Calculated Type",null,"Not Protected",Replacer.ReplaceValue,{"Protected label"})
+				        ,#"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,"No Label",Replacer.ReplaceValue,{"Label name"})
+				        ,#"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1",null,"None",Replacer.ReplaceValue,{"Endorsement"})
+				        ,#"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","10","Master Data",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","2","Certified",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","true","Protected",Replacer.ReplaceText,{"Protected label"})
+				        ,#"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","1","Promoted",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6","","Invalid Label",Replacer.ReplaceValue,{"Label name"})
+		        		,#"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7", each [Workspace name], each if [workspaceType] = 0 then "Fabric Data Agent Workspace" else [Workspace name], Replacer.ReplaceValue, {"Workspace name"})
+		
+				    in
+		       			#"Replaced Value8"
+				    ,#"AddHasTagsColumn" =  Table.AddColumn(transform, "HasTags", each if [Tags] is null then "false" else "true")
+				    ,#"ChangeHasTagsType" = Table.TransformColumnTypes(#"AddHasTagsColumn",{{"HasTags", type logical}})
+				    ,#"RemoveTagsColumn" = Table.RemoveColumns(#"ChangeHasTagsType",{"Tags"})
+				    ,#"RemoveSubTypeColumn" = Table.RemoveColumns(#"RemoveTagsColumn",{"artifactSubType"})
+				    ,#"RemoveReportTypeColumn" = Table.RemoveColumns(#"RemoveSubTypeColumn",{"reportType"})
+		    		,#"ReportWorkspaceTypeColumn" = Table.RemoveColumns(#"RemoveReportTypeColumn",{"workspaceType"})
+		    		,#"Filtered Rows" = Table.SelectRows(#"ReportWorkspaceTypeColumn", each [Item ID] <> "")
+				in
+				    #"Filtered Rows"
+	lineageTag: fedea96f-6525-4a99-b232-e147acdd5a80
+	queryGroup: Fact
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression InsightArtifacts =
+		let
+				    querySupportedTypes = { "DataExploration", "DigitalTwinBuilder", "GraphQuerySet", "KustoDashboard", "Map", "Ontology", "OrgApp" },
+				    // Function to get data from a specific page
+				    GetPage = (pageNumber as number) as table =>
+				    let
+				        // Set the endpoint URL
+				        endpoint = "/metadata/datahub/V2/artifacts",
+		
+				        // Set the properties to be sent in the body
+				        body = [
+				            pageSize = 500,
+				            pageNumber = pageNumber,
+				            filter = "myData",
+				            supportedTypes = querySupportedTypes
+				        ],
+		
+				        // Convert body to JSON
+				        jsonBody = Json.FromValue(body),
+		
+				        // Generate requestId for debugging
+				        requestId = "550e8400-e29b-41d4-a716-446655440000",
+		
+				        // Get the data from the datahub API using Web.Contents
+				        response = MetricsDataConnector.GetAPIDataWithBody(Host, endpoint, body, requestId),
+		
+				        // Convert response to table
+				        result = if List.IsEmpty(response) then EmptyTable
+				        else Table.FromList(response, Splitter.SplitByNothing(), null, null, ExtraValues.Error)
+				    in
+				        result,
+		
+				    // Initialize page number and result table
+				    pageNumber = 1,
+				    // Loop to get all pages
+				    GetAllPages = List.Generate(
+				        () => [PageNumber = pageNumber, Data = GetPage(PageNumber)],
+				        each Table.RowCount([Data]) > 1 or Table.FirstValue([Data]) <> "",
+				        each [PageNumber = [PageNumber] + 1, Data = if Table.RowCount([Data]) < 500 then EmptyTable else if [PageNumber] > 50 then EmptyTable else GetPage([PageNumber]+1)],
+				        each [Data]
+				    ),
+		
+				    // Combine all pages into a single table
+				    InitialEmptyTable = Table.FromRecords({[#"Item ID" = "", #"Item name" = "", #"Description" = "", #"Tags" = "", #"artifactTypeIDPBI" = "", #"artifactSubType" = "", #"Workspace ID" = "", #"Workspace name" = "", #"ArtifactTypeFabric" = "", #"Last refresh time" = "", #"LastRefreshFailed" = false, #"Item size MB" = "", #"LastRefreshStatus" = "",  #"Endorsement" = "", #"Last visited time" = "", #"Discoverability" = "", #"Label name" = "", #"Protected label" = "", #"Label applied method" = "", #"Item type" = "", #"DomainObjectId" = "", #"ParentDomainObjectId" = "", #"DomainName" = "", #"ParentDomainName" = "", #"reportType" = "", #"workspaceType" = ""]}),
+				    EmptyTable = Table.TransformColumnTypes(InitialEmptyTable, {{"LastRefreshFailed", type logical} }),
+				    finalTable = Table.Combine(GetAllPages),
+				    transform = if Table.IsEmpty(finalTable) then EmptyTable else
+				    let
+				        #"Expanded Column1" = Table.ExpandRecordColumn(finalTable, "Column1",
+		                		{"artifactObjectId", "artifactTags", "description", "displayName", "artifactType",      "artifactSubType", "workspaceObjectId", "workspaceName",  "artifact", "lastVisitedTimeUTC", "isDiscoverable",  "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTime", "workspaceType"},
+		                		{"Item ID",          "Tags",         "Description", "Item name",   "artifactTypeIDPBI", "artifactSubType", "Workspace ID",      "Workspace name", "artifact", "Last visited time",  "Discoverability", "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTimeEpoc", "workspaceType"})
+				        ,#"Expanded artifact" = Table.ExpandRecordColumn(#"Expanded Column1", "artifact",
+				                {"artifactType",       "sizeInMBs", "lastRefreshStatus", "reportType"},
+				                {"ArtifactTypeFabric", "Item size MB", "LastRefreshStatus", "reportType"})
+				        ,#"Expanded artifactEndorsement" = Table.ExpandRecordColumn(#"Expanded artifact", "artifactEndorsement",
+				                {"stage"},
+				                {"Endorsement"})
+				        ,#"Expanded artifactInformationProtection" = Table.ExpandRecordColumn(#"Expanded artifactEndorsement", "artifactInformationProtection",
+				                {"name",       "hasProtectionPolicy", "triggerType"},
+				                {"Label name", "Protected label",     "Label applied method"})
+				        ,#"Expanded dataDomainArtifactInfo" = Table.ExpandRecordColumn(#"Expanded artifactInformationProtection", "dataDomainArtifactInfo",
+				            {"domainObjectId", "parentObjectId",       "domainDisplayName", "parentDisplayName"},
+				            {"DomainObjectId", "ParentDomainObjectId", "DomainName",        "ParentDomainName"})
+		
+				        ,#"SelectSpecificColumns" = Table.SelectColumns(#"Expanded dataDomainArtifactInfo",
+		            		{"Item ID", "Item name", "Tags", "Description", "artifactTypeIDPBI", "artifactSubType", "Workspace ID", "Workspace name", "ArtifactTypeFabric", "lastRefreshTimeEpoc", "LastRefreshStatus", "Item size MB", "Endorsement", "Last visited time", "Discoverability", "Label name", "Protected label", "Label applied method", "DomainObjectId", "ParentDomainObjectId", "DomainName", "ParentDomainName", "reportType", "workspaceType"})
+		
+				        ,#"AddLastRefreshColumn" = Table.AddColumn(#"SelectSpecificColumns", "Last refresh time", each
+				            let
+				                isEpoc = Text.StartsWith([lastRefreshTimeEpoc], "/Date(") and Text.EndsWith([lastRefreshTimeEpoc], ")/"),
+				                // Extract the numeric part from the string
+				                timestamp = if isEpoc then Number.FromText(Text.Middle([lastRefreshTimeEpoc], 6, Text.Length([lastRefreshTimeEpoc]) - 8)) else -1,
+		
+				                // Convert milliseconds to seconds
+				                timestampInSeconds = timestamp / 1000,
+		
+				                // Convert to a readable date format
+				                readableDate = if timestampInSeconds > 0 then #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, timestampInSeconds) else null
+				            in
+				                readableDate
+				        )
+		
+				        ,#"AddLastRefreshFailedColumn" = Table.AddColumn(#"AddLastRefreshColumn", "LastRefreshFailed", each
+				            ( [artifactTypeIDPBI] = 3 and [LastRefreshStatus] = 4 ) or
+				            ( List.Contains({7, 11}, [artifactTypeIDPBI]) and [LastRefreshStatus] = 2 ),
+				            type logical)
+		
+				        // Remove the original timestamp column if needed
+				        ,#"RemoveEpochColumn"  = Table.RemoveColumns(#"AddLastRefreshFailedColumn", {"lastRefreshTimeEpoc"})
+		
+				        ,#"Changed Type" = Table.TransformColumnTypes(#"RemoveEpochColumn",{{"Last refresh time", type datetime},{"Last visited time", type datetime}})
+				        ,#"Changed Type1" = Table.TransformColumnTypes(#"Changed Type",{{"Last visited time", type date}, {"Protected label", type text}})
+				        ,#"Changed Type2" = Table.TransformColumnTypes(#"Changed Type1",{{"Endorsement", type text}})
+		
+				        ,#"Add Calculated Type" = Table.AddColumn(#"Changed Type2", "Item type", each if [artifactTypeIDPBI] = 3 then "Semantic model" else if [artifactTypeIDPBI] = 1 then "Dashboard" else if [artifactTypeIDPBI] = 2 and [reportType] = 1 then "Paginated report" else if [artifactTypeIDPBI] = 2 then "Report" else if [artifactTypeIDPBI] = 7 then "Dataflow" else if [artifactTypeIDPBI] = 11 and [artifactSubType] = 4 then "Warehouse" else if [artifactTypeIDPBI] = 11  then "Datamart" else if [artifactTypeIDPBI] = 12 then [ArtifactTypeFabric] else null)
+		
+				        ,#"Replaced Value" = Table.ReplaceValue(#"Add Calculated Type",null,"Not Protected",Replacer.ReplaceValue,{"Protected label"})
+				        ,#"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,"No Label",Replacer.ReplaceValue,{"Label name"})
+				        ,#"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1",null,"None",Replacer.ReplaceValue,{"Endorsement"})
+				        ,#"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","10","Master Data",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","2","Certified",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","true","Protected",Replacer.ReplaceText,{"Protected label"})
+				        ,#"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","1","Promoted",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6","","Invalid Label",Replacer.ReplaceValue,{"Label name"})
+		        		,#"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7", each [Workspace name], each if [workspaceType] = 0 then "Fabric Data Agent Workspace" else [Workspace name], Replacer.ReplaceValue, {"Workspace name"})
+		
+				    in
+		       			#"Replaced Value8"
+				    ,#"AddHasTagsColumn" =  Table.AddColumn(transform, "HasTags", each if [Tags] is null then "false" else "true")
+				    ,#"ChangeHasTagsType" = Table.TransformColumnTypes(#"AddHasTagsColumn",{{"HasTags", type logical}})
+				    ,#"RemoveTagsColumn" = Table.RemoveColumns(#"ChangeHasTagsType",{"Tags"})
+				    ,#"RemoveSubTypeColumn" = Table.RemoveColumns(#"RemoveTagsColumn",{"artifactSubType"})
+				    ,#"RemoveReportTypeColumn" = Table.RemoveColumns(#"RemoveSubTypeColumn",{"reportType"})
+		    		,#"ReportWorkspaceTypeColumn" = Table.RemoveColumns(#"RemoveReportTypeColumn",{"workspaceType"})
+		    		,#"Filtered Rows" = Table.SelectRows(#"ReportWorkspaceTypeColumn", each [Item ID] <> "")
+				in
+				    #"Filtered Rows"
+	lineageTag: c63b1417-213c-4538-9501-8793d1249fa6
+	queryGroup: Fact
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression ProcessArtifacts =
+		let
+				    querySupportedTypes = { "ApacheAirflowProject", "CopyJob", "DataFactory", "DataflowFabric", "EventStream", "FunctionSet", "GraphQL", "KustoQueryWorkbench", "LLMPlugin", "MLExperiment", "MLModel", "MountedDataFactory", "OperationalAgents", "Pipeline", "ReflexProject", "SparkJobDefinition", "SynapseNotebook" },
+				    // Function to get data from a specific page
+				    GetPage = (pageNumber as number) as table =>
+				    let
+				        // Set the endpoint URL
+				        endpoint = "/metadata/datahub/V2/artifacts",
+		
+				        // Set the properties to be sent in the body
+				        body = [
+				            pageSize = 500,
+				            pageNumber = pageNumber,
+				            filter = "myData",
+				            supportedTypes = querySupportedTypes
+				        ],
+		
+				        // Convert body to JSON
+				        jsonBody = Json.FromValue(body),
+		
+				        // Generate requestId for debugging
+				        requestId = "550e8400-e29b-41d4-a716-446655440000",
+		
+				        // Get the data from the datahub API using Web.Contents
+				        response = MetricsDataConnector.GetAPIDataWithBody(Host, endpoint, body, requestId),
+		
+				        // Convert response to table
+				        result = if List.IsEmpty(response) then EmptyTable
+				        else Table.FromList(response, Splitter.SplitByNothing(), null, null, ExtraValues.Error)
+				    in
+				        result,
+		
+				    // Initialize page number and result table
+				    pageNumber = 1,
+				    // Loop to get all pages
+				    GetAllPages = List.Generate(
+				        () => [PageNumber = pageNumber, Data = GetPage(PageNumber)],
+				        each Table.RowCount([Data]) > 1 or Table.FirstValue([Data]) <> "",
+				        each [PageNumber = [PageNumber] + 1, Data = if Table.RowCount([Data]) < 500 then EmptyTable else if [PageNumber] > 50 then EmptyTable else GetPage([PageNumber]+1)],
+				        each [Data]
+				    ),
+		
+				    // Combine all pages into a single table
+				    InitialEmptyTable = Table.FromRecords({[#"Item ID" = "", #"Item name" = "", #"Description" = "", #"Tags" = "", #"artifactTypeIDPBI" = "", #"artifactSubType" = "", #"Workspace ID" = "", #"Workspace name" = "", #"ArtifactTypeFabric" = "", #"Last refresh time" = "", #"LastRefreshFailed" = false, #"Item size MB" = "", #"LastRefreshStatus" = "",  #"Endorsement" = "", #"Last visited time" = "", #"Discoverability" = "", #"Label name" = "", #"Protected label" = "", #"Label applied method" = "", #"Item type" = "", #"DomainObjectId" = "", #"ParentDomainObjectId" = "", #"DomainName" = "", #"ParentDomainName" = "", #"reportType" = "", #"workspaceType" = ""]}),
+				    EmptyTable = Table.TransformColumnTypes(InitialEmptyTable, {{"LastRefreshFailed", type logical} }),
+				    finalTable = Table.Combine(GetAllPages),
+				    transform = if Table.IsEmpty(finalTable) then EmptyTable else
+				    let
+				        #"Expanded Column1" = Table.ExpandRecordColumn(finalTable, "Column1",
+		                		{"artifactObjectId", "artifactTags", "description", "displayName", "artifactType",      "artifactSubType", "workspaceObjectId", "workspaceName",  "artifact", "lastVisitedTimeUTC", "isDiscoverable",  "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTime", "workspaceType"},
+		                		{"Item ID",          "Tags",         "Description", "Item name",   "artifactTypeIDPBI", "artifactSubType", "Workspace ID",      "Workspace name", "artifact", "Last visited time",  "Discoverability", "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTimeEpoc", "workspaceType"})
+				        ,#"Expanded artifact" = Table.ExpandRecordColumn(#"Expanded Column1", "artifact",
+				                {"artifactType",       "sizeInMBs", "lastRefreshStatus", "reportType"},
+				                {"ArtifactTypeFabric", "Item size MB", "LastRefreshStatus", "reportType"})
+				        ,#"Expanded artifactEndorsement" = Table.ExpandRecordColumn(#"Expanded artifact", "artifactEndorsement",
+				                {"stage"},
+				                {"Endorsement"})
+				        ,#"Expanded artifactInformationProtection" = Table.ExpandRecordColumn(#"Expanded artifactEndorsement", "artifactInformationProtection",
+				                {"name",       "hasProtectionPolicy", "triggerType"},
+				                {"Label name", "Protected label",     "Label applied method"})
+				        ,#"Expanded dataDomainArtifactInfo" = Table.ExpandRecordColumn(#"Expanded artifactInformationProtection", "dataDomainArtifactInfo",
+				            {"domainObjectId", "parentObjectId",       "domainDisplayName", "parentDisplayName"},
+				            {"DomainObjectId", "ParentDomainObjectId", "DomainName",        "ParentDomainName"})
+		
+				        ,#"SelectSpecificColumns" = Table.SelectColumns(#"Expanded dataDomainArtifactInfo",
+		            		{"Item ID", "Item name", "Tags", "Description", "artifactTypeIDPBI", "artifactSubType", "Workspace ID", "Workspace name", "ArtifactTypeFabric", "lastRefreshTimeEpoc", "LastRefreshStatus", "Item size MB", "Endorsement", "Last visited time", "Discoverability", "Label name", "Protected label", "Label applied method", "DomainObjectId", "ParentDomainObjectId", "DomainName", "ParentDomainName", "reportType", "workspaceType"})
+		
+				        ,#"AddLastRefreshColumn" = Table.AddColumn(#"SelectSpecificColumns", "Last refresh time", each
+				            let
+				                isEpoc = Text.StartsWith([lastRefreshTimeEpoc], "/Date(") and Text.EndsWith([lastRefreshTimeEpoc], ")/"),
+				                // Extract the numeric part from the string
+				                timestamp = if isEpoc then Number.FromText(Text.Middle([lastRefreshTimeEpoc], 6, Text.Length([lastRefreshTimeEpoc]) - 8)) else -1,
+		
+				                // Convert milliseconds to seconds
+				                timestampInSeconds = timestamp / 1000,
+		
+				                // Convert to a readable date format
+				                readableDate = if timestampInSeconds > 0 then #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, timestampInSeconds) else null
+				            in
+				                readableDate
+				        )
+		
+				        ,#"AddLastRefreshFailedColumn" = Table.AddColumn(#"AddLastRefreshColumn", "LastRefreshFailed", each
+				            ( [artifactTypeIDPBI] = 3 and [LastRefreshStatus] = 4 ) or
+				            ( List.Contains({7, 11}, [artifactTypeIDPBI]) and [LastRefreshStatus] = 2 ),
+				            type logical)
+		
+				        // Remove the original timestamp column if needed
+				        ,#"RemoveEpochColumn"  = Table.RemoveColumns(#"AddLastRefreshFailedColumn", {"lastRefreshTimeEpoc"})
+		
+				        ,#"Changed Type" = Table.TransformColumnTypes(#"RemoveEpochColumn",{{"Last refresh time", type datetime},{"Last visited time", type datetime}})
+				        ,#"Changed Type1" = Table.TransformColumnTypes(#"Changed Type",{{"Last visited time", type date}, {"Protected label", type text}})
+				        ,#"Changed Type2" = Table.TransformColumnTypes(#"Changed Type1",{{"Endorsement", type text}})
+		
+				        ,#"Add Calculated Type" = Table.AddColumn(#"Changed Type2", "Item type", each if [artifactTypeIDPBI] = 3 then "Semantic model" else if [artifactTypeIDPBI] = 1 then "Dashboard" else if [artifactTypeIDPBI] = 2 and [reportType] = 1 then "Paginated report" else if [artifactTypeIDPBI] = 2 then "Report" else if [artifactTypeIDPBI] = 7 then "Dataflow" else if [artifactTypeIDPBI] = 11 and [artifactSubType] = 4 then "Warehouse" else if [artifactTypeIDPBI] = 11  then "Datamart" else if [artifactTypeIDPBI] = 12 then [ArtifactTypeFabric] else null)
+		
+				        ,#"Replaced Value" = Table.ReplaceValue(#"Add Calculated Type",null,"Not Protected",Replacer.ReplaceValue,{"Protected label"})
+				        ,#"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,"No Label",Replacer.ReplaceValue,{"Label name"})
+				        ,#"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1",null,"None",Replacer.ReplaceValue,{"Endorsement"})
+				        ,#"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","10","Master Data",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","2","Certified",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","true","Protected",Replacer.ReplaceText,{"Protected label"})
+				        ,#"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","1","Promoted",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6","","Invalid Label",Replacer.ReplaceValue,{"Label name"})
+		        		,#"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7", each [Workspace name], each if [workspaceType] = 0 then "Fabric Data Agent Workspace" else [Workspace name], Replacer.ReplaceValue, {"Workspace name"})
+		
+				    in
+		       			#"Replaced Value8"
+				    ,#"AddHasTagsColumn" =  Table.AddColumn(transform, "HasTags", each if [Tags] is null then "false" else "true")
+				    ,#"ChangeHasTagsType" = Table.TransformColumnTypes(#"AddHasTagsColumn",{{"HasTags", type logical}})
+				    ,#"RemoveTagsColumn" = Table.RemoveColumns(#"ChangeHasTagsType",{"Tags"})
+				    ,#"RemoveSubTypeColumn" = Table.RemoveColumns(#"RemoveTagsColumn",{"artifactSubType"})
+				    ,#"RemoveReportTypeColumn" = Table.RemoveColumns(#"RemoveSubTypeColumn",{"reportType"})
+		    		,#"ReportWorkspaceTypeColumn" = Table.RemoveColumns(#"RemoveReportTypeColumn",{"workspaceType"})
+		    		,#"Filtered Rows" = Table.SelectRows(#"ReportWorkspaceTypeColumn", each [Item ID] <> "")
+				in
+				    #"Filtered Rows"
+	lineageTag: 9a44c227-811e-401f-a5a4-d0f6d919ecf9
+	queryGroup: Fact
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression SolutionsArtifacts =
+		let
+				    querySupportedTypes = { "HLSCohort", "HealthDataManager", "RetailDataManager", "SustainabilityDataManager" },
+				    // Function to get data from a specific page
+				    GetPage = (pageNumber as number) as table =>
+				    let
+				        // Set the endpoint URL
+				        endpoint = "/metadata/datahub/V2/artifacts",
+		
+				        // Set the properties to be sent in the body
+				        body = [
+				            pageSize = 500,
+				            pageNumber = pageNumber,
+				            filter = "myData",
+				            supportedTypes = querySupportedTypes
+				        ],
+		
+				        // Convert body to JSON
+				        jsonBody = Json.FromValue(body),
+		
+				        // Generate requestId for debugging
+				        requestId = "550e8400-e29b-41d4-a716-446655440000",
+		
+				        // Get the data from the datahub API using Web.Contents
+				        response = MetricsDataConnector.GetAPIDataWithBody(Host, endpoint, body, requestId),
+		
+				        // Convert response to table
+				        result = if List.IsEmpty(response) then EmptyTable
+				        else Table.FromList(response, Splitter.SplitByNothing(), null, null, ExtraValues.Error)
+				    in
+				        result,
+		
+				    // Initialize page number and result table
+				    pageNumber = 1,
+				    // Loop to get all pages
+				    GetAllPages = List.Generate(
+				        () => [PageNumber = pageNumber, Data = GetPage(PageNumber)],
+				        each Table.RowCount([Data]) > 1 or Table.FirstValue([Data]) <> "",
+				        each [PageNumber = [PageNumber] + 1, Data = if Table.RowCount([Data]) < 500 then EmptyTable else if [PageNumber] > 50 then EmptyTable else GetPage([PageNumber]+1)],
+				        each [Data]
+				    ),
+		
+				    // Combine all pages into a single table
+				    InitialEmptyTable = Table.FromRecords({[#"Item ID" = "", #"Item name" = "", #"Description" = "", #"Tags" = "", #"artifactTypeIDPBI" = "", #"artifactSubType" = "", #"Workspace ID" = "", #"Workspace name" = "", #"ArtifactTypeFabric" = "", #"Last refresh time" = "", #"LastRefreshFailed" = false, #"Item size MB" = "", #"LastRefreshStatus" = "",  #"Endorsement" = "", #"Last visited time" = "", #"Discoverability" = "", #"Label name" = "", #"Protected label" = "", #"Label applied method" = "", #"Item type" = "", #"DomainObjectId" = "", #"ParentDomainObjectId" = "", #"DomainName" = "", #"ParentDomainName" = "", #"reportType" = "", #"workspaceType" = ""]}),
+				    EmptyTable = Table.TransformColumnTypes(InitialEmptyTable, {{"LastRefreshFailed", type logical} }),
+				    finalTable = Table.Combine(GetAllPages),
+				    transform = if Table.IsEmpty(finalTable) then EmptyTable else
+				    let
+				        #"Expanded Column1" = Table.ExpandRecordColumn(finalTable, "Column1",
+		                		{"artifactObjectId", "artifactTags", "description", "displayName", "artifactType",      "artifactSubType", "workspaceObjectId", "workspaceName",  "artifact", "lastVisitedTimeUTC", "isDiscoverable",  "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTime", "workspaceType"},
+		                		{"Item ID",          "Tags",         "Description", "Item name",   "artifactTypeIDPBI", "artifactSubType", "Workspace ID",      "Workspace name", "artifact", "Last visited time",  "Discoverability", "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTimeEpoc", "workspaceType"})
+				        ,#"Expanded artifact" = Table.ExpandRecordColumn(#"Expanded Column1", "artifact",
+				                {"artifactType",       "sizeInMBs", "lastRefreshStatus", "reportType"},
+				                {"ArtifactTypeFabric", "Item size MB", "LastRefreshStatus", "reportType"})
+				        ,#"Expanded artifactEndorsement" = Table.ExpandRecordColumn(#"Expanded artifact", "artifactEndorsement",
+				                {"stage"},
+				                {"Endorsement"})
+				        ,#"Expanded artifactInformationProtection" = Table.ExpandRecordColumn(#"Expanded artifactEndorsement", "artifactInformationProtection",
+				                {"name",       "hasProtectionPolicy", "triggerType"},
+				                {"Label name", "Protected label",     "Label applied method"})
+				        ,#"Expanded dataDomainArtifactInfo" = Table.ExpandRecordColumn(#"Expanded artifactInformationProtection", "dataDomainArtifactInfo",
+				            {"domainObjectId", "parentObjectId",       "domainDisplayName", "parentDisplayName"},
+				            {"DomainObjectId", "ParentDomainObjectId", "DomainName",        "ParentDomainName"})
+		
+				        ,#"SelectSpecificColumns" = Table.SelectColumns(#"Expanded dataDomainArtifactInfo",
+		            		{"Item ID", "Item name", "Tags", "Description", "artifactTypeIDPBI", "artifactSubType", "Workspace ID", "Workspace name", "ArtifactTypeFabric", "lastRefreshTimeEpoc", "LastRefreshStatus", "Item size MB", "Endorsement", "Last visited time", "Discoverability", "Label name", "Protected label", "Label applied method", "DomainObjectId", "ParentDomainObjectId", "DomainName", "ParentDomainName", "reportType", "workspaceType"})
+		
+				        ,#"AddLastRefreshColumn" = Table.AddColumn(#"SelectSpecificColumns", "Last refresh time", each
+				            let
+				                isEpoc = Text.StartsWith([lastRefreshTimeEpoc], "/Date(") and Text.EndsWith([lastRefreshTimeEpoc], ")/"),
+				                // Extract the numeric part from the string
+				                timestamp = if isEpoc then Number.FromText(Text.Middle([lastRefreshTimeEpoc], 6, Text.Length([lastRefreshTimeEpoc]) - 8)) else -1,
+		
+				                // Convert milliseconds to seconds
+				                timestampInSeconds = timestamp / 1000,
+		
+				                // Convert to a readable date format
+				                readableDate = if timestampInSeconds > 0 then #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, timestampInSeconds) else null
+				            in
+				                readableDate
+				        )
+		
+				        ,#"AddLastRefreshFailedColumn" = Table.AddColumn(#"AddLastRefreshColumn", "LastRefreshFailed", each
+				            ( [artifactTypeIDPBI] = 3 and [LastRefreshStatus] = 4 ) or
+				            ( List.Contains({7, 11}, [artifactTypeIDPBI]) and [LastRefreshStatus] = 2 ),
+				            type logical)
+		
+				        // Remove the original timestamp column if needed
+				        ,#"RemoveEpochColumn"  = Table.RemoveColumns(#"AddLastRefreshFailedColumn", {"lastRefreshTimeEpoc"})
+		
+				        ,#"Changed Type" = Table.TransformColumnTypes(#"RemoveEpochColumn",{{"Last refresh time", type datetime},{"Last visited time", type datetime}})
+				        ,#"Changed Type1" = Table.TransformColumnTypes(#"Changed Type",{{"Last visited time", type date}, {"Protected label", type text}})
+				        ,#"Changed Type2" = Table.TransformColumnTypes(#"Changed Type1",{{"Endorsement", type text}})
+		
+				        ,#"Add Calculated Type" = Table.AddColumn(#"Changed Type2", "Item type", each if [artifactTypeIDPBI] = 3 then "Semantic model" else if [artifactTypeIDPBI] = 1 then "Dashboard" else if [artifactTypeIDPBI] = 2 and [reportType] = 1 then "Paginated report" else if [artifactTypeIDPBI] = 2 then "Report" else if [artifactTypeIDPBI] = 7 then "Dataflow" else if [artifactTypeIDPBI] = 11 and [artifactSubType] = 4 then "Warehouse" else if [artifactTypeIDPBI] = 11  then "Datamart" else if [artifactTypeIDPBI] = 12 then [ArtifactTypeFabric] else null)
+		
+				        ,#"Replaced Value" = Table.ReplaceValue(#"Add Calculated Type",null,"Not Protected",Replacer.ReplaceValue,{"Protected label"})
+				        ,#"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,"No Label",Replacer.ReplaceValue,{"Label name"})
+				        ,#"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1",null,"None",Replacer.ReplaceValue,{"Endorsement"})
+				        ,#"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","10","Master Data",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","2","Certified",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","true","Protected",Replacer.ReplaceText,{"Protected label"})
+				        ,#"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","1","Promoted",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6","","Invalid Label",Replacer.ReplaceValue,{"Label name"})
+		        		,#"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7", each [Workspace name], each if [workspaceType] = 0 then "Fabric Data Agent Workspace" else [Workspace name], Replacer.ReplaceValue, {"Workspace name"})
+		
+				    in
+		       			#"Replaced Value8"
+				    ,#"AddHasTagsColumn" =  Table.AddColumn(transform, "HasTags", each if [Tags] is null then "false" else "true")
+				    ,#"ChangeHasTagsType" = Table.TransformColumnTypes(#"AddHasTagsColumn",{{"HasTags", type logical}})
+				    ,#"RemoveTagsColumn" = Table.RemoveColumns(#"ChangeHasTagsType",{"Tags"})
+				    ,#"RemoveSubTypeColumn" = Table.RemoveColumns(#"RemoveTagsColumn",{"artifactSubType"})
+				    ,#"RemoveReportTypeColumn" = Table.RemoveColumns(#"RemoveSubTypeColumn",{"reportType"})
+		    		,#"ReportWorkspaceTypeColumn" = Table.RemoveColumns(#"RemoveReportTypeColumn",{"workspaceType"})
+		    		,#"Filtered Rows" = Table.SelectRows(#"ReportWorkspaceTypeColumn", each [Item ID] <> "")
+				in
+				    #"Filtered Rows"
+	lineageTag: fe76062f-9c3b-463c-8de3-bc5146b2bb10
+	queryGroup: Fact
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression ConfigurationsArtifacts =
+		let
+				    querySupportedTypes = { "Environment", "Variables" },
+				    // Function to get data from a specific page
+				    GetPage = (pageNumber as number) as table =>
+				    let
+				        // Set the endpoint URL
+				        endpoint = "/metadata/datahub/V2/artifacts",
+		
+				        // Set the properties to be sent in the body
+				        body = [
+				            pageSize = 500,
+				            pageNumber = pageNumber,
+				            filter = "myData",
+				            supportedTypes = querySupportedTypes
+				        ],
+		
+				        // Convert body to JSON
+				        jsonBody = Json.FromValue(body),
+		
+				        // Generate requestId for debugging
+				        requestId = "550e8400-e29b-41d4-a716-446655440000",
+		
+				        // Get the data from the datahub API using Web.Contents
+				        response = MetricsDataConnector.GetAPIDataWithBody(Host, endpoint, body, requestId),
+		
+				        // Convert response to table
+				        result = if List.IsEmpty(response) then EmptyTable
+				        else Table.FromList(response, Splitter.SplitByNothing(), null, null, ExtraValues.Error)
+				    in
+				        result,
+		
+				    // Initialize page number and result table
+				    pageNumber = 1,
+				    // Loop to get all pages
+				    GetAllPages = List.Generate(
+				        () => [PageNumber = pageNumber, Data = GetPage(PageNumber)],
+				        each Table.RowCount([Data]) > 1 or Table.FirstValue([Data]) <> "",
+				        each [PageNumber = [PageNumber] + 1, Data = if Table.RowCount([Data]) < 500 then EmptyTable else if [PageNumber] > 50 then EmptyTable else GetPage([PageNumber]+1)],
+				        each [Data]
+				    ),
+		
+				    // Combine all pages into a single table
+				    InitialEmptyTable = Table.FromRecords({[#"Item ID" = "", #"Item name" = "", #"Description" = "", #"Tags" = "", #"artifactTypeIDPBI" = "", #"artifactSubType" = "", #"Workspace ID" = "", #"Workspace name" = "", #"ArtifactTypeFabric" = "", #"Last refresh time" = "", #"LastRefreshFailed" = false, #"Item size MB" = "", #"LastRefreshStatus" = "",  #"Endorsement" = "", #"Last visited time" = "", #"Discoverability" = "", #"Label name" = "", #"Protected label" = "", #"Label applied method" = "", #"Item type" = "", #"DomainObjectId" = "", #"ParentDomainObjectId" = "", #"DomainName" = "", #"ParentDomainName" = "", #"reportType" = "", #"workspaceType" = ""]}),
+				    EmptyTable = Table.TransformColumnTypes(InitialEmptyTable, {{"LastRefreshFailed", type logical} }),
+				    finalTable = Table.Combine(GetAllPages),
+				    transform = if Table.IsEmpty(finalTable) then EmptyTable else
+				    let
+				        #"Expanded Column1" = Table.ExpandRecordColumn(finalTable, "Column1",
+		                		{"artifactObjectId", "artifactTags", "description", "displayName", "artifactType",      "artifactSubType", "workspaceObjectId", "workspaceName",  "artifact", "lastVisitedTimeUTC", "isDiscoverable",  "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTime", "workspaceType"},
+		                		{"Item ID",          "Tags",         "Description", "Item name",   "artifactTypeIDPBI", "artifactSubType", "Workspace ID",      "Workspace name", "artifact", "Last visited time",  "Discoverability", "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTimeEpoc", "workspaceType"})
+				        ,#"Expanded artifact" = Table.ExpandRecordColumn(#"Expanded Column1", "artifact",
+				                {"artifactType",       "sizeInMBs", "lastRefreshStatus", "reportType"},
+				                {"ArtifactTypeFabric", "Item size MB", "LastRefreshStatus", "reportType"})
+				        ,#"Expanded artifactEndorsement" = Table.ExpandRecordColumn(#"Expanded artifact", "artifactEndorsement",
+				                {"stage"},
+				                {"Endorsement"})
+				        ,#"Expanded artifactInformationProtection" = Table.ExpandRecordColumn(#"Expanded artifactEndorsement", "artifactInformationProtection",
+				                {"name",       "hasProtectionPolicy", "triggerType"},
+				                {"Label name", "Protected label",     "Label applied method"})
+				        ,#"Expanded dataDomainArtifactInfo" = Table.ExpandRecordColumn(#"Expanded artifactInformationProtection", "dataDomainArtifactInfo",
+				            {"domainObjectId", "parentObjectId",       "domainDisplayName", "parentDisplayName"},
+				            {"DomainObjectId", "ParentDomainObjectId", "DomainName",        "ParentDomainName"})
+		
+				        ,#"SelectSpecificColumns" = Table.SelectColumns(#"Expanded dataDomainArtifactInfo",
+		            		{"Item ID", "Item name", "Tags", "Description", "artifactTypeIDPBI", "artifactSubType", "Workspace ID", "Workspace name", "ArtifactTypeFabric", "lastRefreshTimeEpoc", "LastRefreshStatus", "Item size MB", "Endorsement", "Last visited time", "Discoverability", "Label name", "Protected label", "Label applied method", "DomainObjectId", "ParentDomainObjectId", "DomainName", "ParentDomainName", "reportType", "workspaceType"})
+		
+				        ,#"AddLastRefreshColumn" = Table.AddColumn(#"SelectSpecificColumns", "Last refresh time", each
+				            let
+				                isEpoc = Text.StartsWith([lastRefreshTimeEpoc], "/Date(") and Text.EndsWith([lastRefreshTimeEpoc], ")/"),
+				                // Extract the numeric part from the string
+				                timestamp = if isEpoc then Number.FromText(Text.Middle([lastRefreshTimeEpoc], 6, Text.Length([lastRefreshTimeEpoc]) - 8)) else -1,
+		
+				                // Convert milliseconds to seconds
+				                timestampInSeconds = timestamp / 1000,
+		
+				                // Convert to a readable date format
+				                readableDate = if timestampInSeconds > 0 then #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, timestampInSeconds) else null
+				            in
+				                readableDate
+				        )
+		
+				        ,#"AddLastRefreshFailedColumn" = Table.AddColumn(#"AddLastRefreshColumn", "LastRefreshFailed", each
+				            ( [artifactTypeIDPBI] = 3 and [LastRefreshStatus] = 4 ) or
+				            ( List.Contains({7, 11}, [artifactTypeIDPBI]) and [LastRefreshStatus] = 2 ),
+				            type logical)
+		
+				        // Remove the original timestamp column if needed
+				        ,#"RemoveEpochColumn"  = Table.RemoveColumns(#"AddLastRefreshFailedColumn", {"lastRefreshTimeEpoc"})
+		
+				        ,#"Changed Type" = Table.TransformColumnTypes(#"RemoveEpochColumn",{{"Last refresh time", type datetime},{"Last visited time", type datetime}})
+				        ,#"Changed Type1" = Table.TransformColumnTypes(#"Changed Type",{{"Last visited time", type date}, {"Protected label", type text}})
+				        ,#"Changed Type2" = Table.TransformColumnTypes(#"Changed Type1",{{"Endorsement", type text}})
+		
+				        ,#"Add Calculated Type" = Table.AddColumn(#"Changed Type2", "Item type", each if [artifactTypeIDPBI] = 3 then "Semantic model" else if [artifactTypeIDPBI] = 1 then "Dashboard" else if [artifactTypeIDPBI] = 2 and [reportType] = 1 then "Paginated report" else if [artifactTypeIDPBI] = 2 then "Report" else if [artifactTypeIDPBI] = 7 then "Dataflow" else if [artifactTypeIDPBI] = 11 and [artifactSubType] = 4 then "Warehouse" else if [artifactTypeIDPBI] = 11  then "Datamart" else if [artifactTypeIDPBI] = 12 then [ArtifactTypeFabric] else null)
+		
+				        ,#"Replaced Value" = Table.ReplaceValue(#"Add Calculated Type",null,"Not Protected",Replacer.ReplaceValue,{"Protected label"})
+				        ,#"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,"No Label",Replacer.ReplaceValue,{"Label name"})
+				        ,#"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1",null,"None",Replacer.ReplaceValue,{"Endorsement"})
+				        ,#"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","10","Master Data",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","2","Certified",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","true","Protected",Replacer.ReplaceText,{"Protected label"})
+				        ,#"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","1","Promoted",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6","","Invalid Label",Replacer.ReplaceValue,{"Label name"})
+		        		,#"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7", each [Workspace name], each if [workspaceType] = 0 then "Fabric Data Agent Workspace" else [Workspace name], Replacer.ReplaceValue, {"Workspace name"})
+		
+				    in
+		       			#"Replaced Value8"
+				    ,#"AddHasTagsColumn" =  Table.AddColumn(transform, "HasTags", each if [Tags] is null then "false" else "true")
+				    ,#"ChangeHasTagsType" = Table.TransformColumnTypes(#"AddHasTagsColumn",{{"HasTags", type logical}})
+				    ,#"RemoveTagsColumn" = Table.RemoveColumns(#"ChangeHasTagsType",{"Tags"})
+				    ,#"RemoveSubTypeColumn" = Table.RemoveColumns(#"RemoveTagsColumn",{"artifactSubType"})
+				    ,#"RemoveReportTypeColumn" = Table.RemoveColumns(#"RemoveSubTypeColumn",{"reportType"})
+		    		,#"ReportWorkspaceTypeColumn" = Table.RemoveColumns(#"RemoveReportTypeColumn",{"workspaceType"})
+		    		,#"Filtered Rows" = Table.SelectRows(#"ReportWorkspaceTypeColumn", each [Item ID] <> "")
+				in
+				    #"Filtered Rows"
+	lineageTag: 9dbe7212-fe42-4b4e-8a61-513b829b31f7
+	queryGroup: Fact
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression PowerBIArtifacts =
+		let
+					querySupportedTypes = { "Dashboard", "PaginatedReport", "PowerBIReport" },
+					// Function to get data from a specific page
+				    GetPage = (pageNumber as number) as table =>
+				    let
+				        // Set the endpoint URL
+				        endpoint = "/metadata/datahub/V2/artifacts",
+		
+				        // Set the properties to be sent in the body
+				        body = [
+				            pageSize = 500,
+				            pageNumber = pageNumber,
+				            filter = "myData",
+				            supportedTypes = querySupportedTypes
+				        ],
+		
+				        // Convert body to JSON
+				        jsonBody = Json.FromValue(body),
+		
+				        // Generate requestId for debugging
+				        requestId = "550e8400-e29b-41d4-a716-446655440000",
+		
+				        // Get the data from the datahub API using Web.Contents
+				        response = MetricsDataConnector.GetAPIDataWithBody(Host, endpoint, body, requestId),
+		
+				        // Convert response to table
+				        result = if List.IsEmpty(response) then EmptyTable
+				        else Table.FromList(response, Splitter.SplitByNothing(), null, null, ExtraValues.Error)
+				    in
+				        result,
+		
+				    // Initialize page number and result table
+				    pageNumber = 1,
+				    // Loop to get all pages
+				    GetAllPages = List.Generate(
+				        () => [PageNumber = pageNumber, Data = GetPage(PageNumber)],
+				        each Table.RowCount([Data]) > 1 or Table.FirstValue([Data]) <> "",
+				        each [PageNumber = [PageNumber] + 1, Data = if Table.RowCount([Data]) < 500 then EmptyTable else if [PageNumber] > 50 then EmptyTable else GetPage([PageNumber]+1)],
+				        each [Data]
+				    ),
+		
+				    // Combine all pages into a single table
+				    InitialEmptyTable = Table.FromRecords({[#"Item ID" = "", #"Item name" = "", #"Description" = "", #"Tags" = "", #"artifactTypeIDPBI" = "", #"artifactSubType" = "", #"Workspace ID" = "", #"Workspace name" = "", #"ArtifactTypeFabric" = "", #"Last refresh time" = "", #"LastRefreshFailed" = false, #"Item size MB" = "", #"LastRefreshStatus" = "",  #"Endorsement" = "", #"Last visited time" = "", #"Discoverability" = "", #"Label name" = "", #"Protected label" = "", #"Label applied method" = "", #"Item type" = "", #"DomainObjectId" = "", #"ParentDomainObjectId" = "", #"DomainName" = "", #"ParentDomainName" = "", #"reportType" = "", #"workspaceType" = ""]}),
+				    EmptyTable = Table.TransformColumnTypes(InitialEmptyTable, {{"LastRefreshFailed", type logical} }),
+				    finalTable = Table.Combine(GetAllPages),
+				    transform = if Table.IsEmpty(finalTable) then EmptyTable else
+				    let
+				        #"Expanded Column1" = Table.ExpandRecordColumn(finalTable, "Column1",
+		                		{"artifactObjectId", "artifactTags", "description", "displayName", "artifactType",      "artifactSubType", "workspaceObjectId", "workspaceName",  "artifact", "lastVisitedTimeUTC", "isDiscoverable",  "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTime", "workspaceType"},
+		                		{"Item ID",          "Tags",         "Description", "Item name",   "artifactTypeIDPBI", "artifactSubType", "Workspace ID",      "Workspace name", "artifact", "Last visited time",  "Discoverability", "artifactEndorsement", "artifactInformationProtection", "dataDomainArtifactInfo", "lastRefreshTimeEpoc", "workspaceType"})
+				        ,#"Expanded artifact" = Table.ExpandRecordColumn(#"Expanded Column1", "artifact",
+				                {"artifactType",       "sizeInMBs", "lastRefreshStatus", "reportType"},
+				                {"ArtifactTypeFabric", "Item size MB", "LastRefreshStatus", "reportType"})
+				        ,#"Expanded artifactEndorsement" = Table.ExpandRecordColumn(#"Expanded artifact", "artifactEndorsement",
+				                {"stage"},
+				                {"Endorsement"})
+				        ,#"Expanded artifactInformationProtection" = Table.ExpandRecordColumn(#"Expanded artifactEndorsement", "artifactInformationProtection",
+				                {"name",       "hasProtectionPolicy", "triggerType"},
+				                {"Label name", "Protected label",     "Label applied method"})
+				        ,#"Expanded dataDomainArtifactInfo" = Table.ExpandRecordColumn(#"Expanded artifactInformationProtection", "dataDomainArtifactInfo",
+				            {"domainObjectId", "parentObjectId",       "domainDisplayName", "parentDisplayName"},
+				            {"DomainObjectId", "ParentDomainObjectId", "DomainName",        "ParentDomainName"})
+		
+				        ,#"SelectSpecificColumns" = Table.SelectColumns(#"Expanded dataDomainArtifactInfo",
+		            		{"Item ID", "Item name", "Tags", "Description", "artifactTypeIDPBI", "artifactSubType", "Workspace ID", "Workspace name", "ArtifactTypeFabric", "lastRefreshTimeEpoc", "LastRefreshStatus", "Item size MB", "Endorsement", "Last visited time", "Discoverability", "Label name", "Protected label", "Label applied method", "DomainObjectId", "ParentDomainObjectId", "DomainName", "ParentDomainName", "reportType", "workspaceType"})
+		
+				        ,#"AddLastRefreshColumn" = Table.AddColumn(#"SelectSpecificColumns", "Last refresh time", each
+				            let
+				                isEpoc = Text.StartsWith([lastRefreshTimeEpoc], "/Date(") and Text.EndsWith([lastRefreshTimeEpoc], ")/"),
+				                // Extract the numeric part from the string
+				                timestamp = if isEpoc then Number.FromText(Text.Middle([lastRefreshTimeEpoc], 6, Text.Length([lastRefreshTimeEpoc]) - 8)) else -1,
+		
+				                // Convert milliseconds to seconds
+				                timestampInSeconds = timestamp / 1000,
+		
+				                // Convert to a readable date format
+				                readableDate = if timestampInSeconds > 0 then #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, timestampInSeconds) else null
+				            in
+				                readableDate
+				        )
+		
+				        ,#"AddLastRefreshFailedColumn" = Table.AddColumn(#"AddLastRefreshColumn", "LastRefreshFailed", each
+				            ( [artifactTypeIDPBI] = 3 and [LastRefreshStatus] = 4 ) or
+				            ( List.Contains({7, 11}, [artifactTypeIDPBI]) and [LastRefreshStatus] = 2 ),
+				            type logical)
+		
+				        // Remove the original timestamp column if needed
+				        ,#"RemoveEpochColumn"  = Table.RemoveColumns(#"AddLastRefreshFailedColumn", {"lastRefreshTimeEpoc"})
+		
+				        ,#"Changed Type" = Table.TransformColumnTypes(#"RemoveEpochColumn",{{"Last refresh time", type datetime},{"Last visited time", type datetime}})
+				        ,#"Changed Type1" = Table.TransformColumnTypes(#"Changed Type",{{"Last visited time", type date}, {"Protected label", type text}})
+				        ,#"Changed Type2" = Table.TransformColumnTypes(#"Changed Type1",{{"Endorsement", type text}})
+		
+				        ,#"Add Calculated Type" = Table.AddColumn(#"Changed Type2", "Item type", each if [artifactTypeIDPBI] = 3 then "Semantic model" else if [artifactTypeIDPBI] = 1 then "Dashboard" else if [artifactTypeIDPBI] = 2 and [reportType] = 1 then "Paginated report" else if [artifactTypeIDPBI] = 2 then "Report" else if [artifactTypeIDPBI] = 7 then "Dataflow" else if [artifactTypeIDPBI] = 11 and [artifactSubType] = 4 then "Warehouse" else if [artifactTypeIDPBI] = 11  then "Datamart" else if [artifactTypeIDPBI] = 12 then [ArtifactTypeFabric] else null)
+		
+				        ,#"Replaced Value" = Table.ReplaceValue(#"Add Calculated Type",null,"Not Protected",Replacer.ReplaceValue,{"Protected label"})
+				        ,#"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,"No Label",Replacer.ReplaceValue,{"Label name"})
+				        ,#"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1",null,"None",Replacer.ReplaceValue,{"Endorsement"})
+				        ,#"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","10","Master Data",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","2","Certified",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","true","Protected",Replacer.ReplaceText,{"Protected label"})
+				        ,#"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","1","Promoted",Replacer.ReplaceText,{"Endorsement"})
+				        ,#"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6","","Invalid Label",Replacer.ReplaceValue,{"Label name"})
+		        		,#"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7", each [Workspace name], each if [workspaceType] = 0 then "Fabric Data Agent Workspace" else [Workspace name], Replacer.ReplaceValue, {"Workspace name"})
+		
+				    in
+		       			#"Replaced Value8"
+				    ,#"AddHasTagsColumn" =  Table.AddColumn(transform, "HasTags", each if [Tags] is null then "false" else "true")
+				    ,#"ChangeHasTagsType" = Table.TransformColumnTypes(#"AddHasTagsColumn",{{"HasTags", type logical}})
+				    ,#"RemoveTagsColumn" = Table.RemoveColumns(#"ChangeHasTagsType",{"Tags"})
+				    ,#"RemoveSubTypeColumn" = Table.RemoveColumns(#"RemoveTagsColumn",{"artifactSubType"})
+				    ,#"RemoveReportTypeColumn" = Table.RemoveColumns(#"RemoveSubTypeColumn",{"reportType"})
+		    		,#"ReportWorkspaceTypeColumn" = Table.RemoveColumns(#"RemoveReportTypeColumn",{"workspaceType"})
+		    		,#"Filtered Rows" = Table.SelectRows(#"ReportWorkspaceTypeColumn", each [Item ID] <> "")
+				in
+				    #"Filtered Rows"
+	lineageTag: 4f41642e-dbc2-4b19-b57d-0f2063e34372
+	queryGroup: Fact
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

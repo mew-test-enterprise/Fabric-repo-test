@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "publish_ontology_dbo_tables",
+    "description": "Publishes ontology demo tables under dbo for reliable binding"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "92417d1d-c122-9d69-4178-e4940dda571e"
+  }
+}

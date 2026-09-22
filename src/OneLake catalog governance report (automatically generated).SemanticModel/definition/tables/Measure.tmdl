@@ -1,0 +1,127 @@
+table Measure
+	lineageTag: 592c8540-ccc9-42db-b914-324fd9265b4b
+
+	measure #Unlabeled =
+			
+			COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Label name] IN { "No Label" })))
+		formatString: 0
+		lineageTag: be3b0fa4-db74-4ad6-bbb8-dc5c3d6a7540
+
+	measure 'Item count' = DISTINCTCOUNT('All Item - Data Owner'[Item ID])
+		formatString: 0
+		lineageTag: 4199cfec-8caf-4e9e-b645-a0fd4687f512
+
+	measure #Labeled = [Item count]-[#Unlabeled]
+		formatString: 0
+		lineageTag: ffb1f44c-d1f1-4736-98e8-894b72a5ace5
+
+	measure #Endorsed =
+			
+			COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Endorsement] IN { "Promoted", "Certified", "Master Data" })))
+		formatString: 0
+		lineageTag: 388d929c-8ea8-4e26-a739-1ccf9109941a
+
+	measure #NotEndorsed = [Item count]-[#Endorsed]
+		formatString: 0
+		lineageTag: 2a6d00cc-bbf7-4c34-aa74-a938bfd064df
+
+	measure #WithDescription =
+			
+			COUNTROWS((FILTER('All Item - Data Owner', LEN('All Item - Data Owner'[Description]) > 0)))
+		formatString: 0
+		lineageTag: 06c00bce-8460-4576-9463-04682a68ba1c
+
+	measure #WithoutDescription = [Item count] - [#WithDescription]
+		formatString: 0
+		lineageTag: ebfd2e92-6aec-437c-9286-bfa0627f3549
+
+	measure #Promoted = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Endorsement] = "Promoted")))
+		formatString: 0
+		lineageTag: 1eaf30e1-170f-4da3-a821-3bafe622345e
+
+	measure #Certified = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Endorsement] = "Certified")))
+		formatString: 0
+		lineageTag: d7044196-f2a1-46fb-a926-f0fc4d720634
+
+	measure #MasterData = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[Endorsement] = "Master Data")))
+		formatString: 0
+		lineageTag: ee8dddf2-5906-4655-bee9-76953aab7976
+
+	measure #Tagged = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[HasTags] = TRUE())))
+		formatString: 0
+		lineageTag: 09d6a287-5760-4245-8f32-14baf4f18d65
+
+	measure #Domains = COUNTROWS(FILTER(DISTINCT('All Item - Data Owner'[DomainName]), NOT(ISBLANK('All Item - Data Owner'[DomainName]))))
+		formatString: 0
+		lineageTag: 3d460e29-22cb-4646-a509-de0c3888616f
+
+	measure #UnTagged = COUNTROWS(DISTINCT(FILTER('All Item - Data Owner', 'All Item - Data Owner'[HasTags] = FALSE())))
+		formatString: 0
+		lineageTag: 70c195ce-de08-42e7-9926-339da0d944da
+
+	measure #FailedRefreshItems = ```
+			
+			CALCULATE(
+			    COUNTROWS('All Item - Data Owner'),
+			    'All Item - Data Owner'[LastRefreshFailed] = TRUE()
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 5d597db4-79c5-43e3-953d-c02699faecc8
+
+	measure #WorkspacesWithDomains = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('All Item - Data Owner'[Workspace ID]),
+			    FILTER(
+			        'All Item - Data Owner', 
+			        NOT(ISBLANK('All Item - Data Owner'[domainObjectId]))
+			    )
+			)
+			```
+		formatString: 0
+		lineageTag: 7341d0d2-73e9-4b02-90ca-4a58f5499f0d
+
+	measure #WorkspacesWithoutDomains = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('All Item - Data Owner'[Workspace ID]),
+			    FILTER(
+			        'All Item - Data Owner', 
+			        ISBLANK('All Item - Data Owner'[domainObjectId])
+			    )
+			)
+			```
+		formatString: 0
+		lineageTag: ad79f956-9ae5-42f1-bf7d-683585900ac1
+
+	measure #Workspaces = DISTINCTCOUNT('All Item - Data Owner'[Workspace ID])
+		formatString: 0
+		lineageTag: 730c2f2a-3971-4678-8a38-174663de2037
+
+	measure Measure
+		lineageTag: af5b142d-d2c9-4e70-8178-5ffb3382f50a
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure #ExternalShares = COUNT(DataSharesStats[Shares Count])
+		formatString: 0
+		lineageTag: 46efe3c7-49d5-4b20-b431-f1f445b3b0a0
+
+	partition Measure = m
+		mode: import
+		queryGroup: Measures
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

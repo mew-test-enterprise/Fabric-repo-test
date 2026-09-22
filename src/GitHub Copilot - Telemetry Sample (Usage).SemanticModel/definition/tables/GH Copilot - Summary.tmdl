@@ -1,0 +1,152 @@
+table 'GH Copilot - Summary'
+	lineageTag: 5e33d70a-f435-41dd-819f-ba4d00f39bdb
+
+	column day
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4e4de5fb-8fb4-4d3e-84c3-af55cf0248a2
+		summarizeBy: none
+		sourceColumn: day
+
+		variation Variation
+			isDefault
+			relationship: f6ad145e-500a-4d7d-899b-36ebb11828cb
+			defaultHierarchy: LocalDateTable_f3833181-27c0-42e5-bef6-4f5ee79b8753.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column total_suggestions_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d1b251c-3848-403a-9e89-fc02173259ba
+		summarizeBy: sum
+		sourceColumn: total_suggestions_count
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_acceptances_count
+		dataType: int64
+		formatString: 0
+		lineageTag: aede7858-c5a5-41fc-8578-42f365774b7d
+		summarizeBy: sum
+		sourceColumn: total_acceptances_count
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_lines_suggested
+		dataType: int64
+		formatString: 0
+		lineageTag: e4f20be9-05ae-4439-bb35-ae033c5a418f
+		summarizeBy: sum
+		sourceColumn: total_lines_suggested
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_lines_accepted
+		dataType: int64
+		formatString: 0
+		lineageTag: 48b1e629-a844-45eb-bdd3-7462bcac238c
+		summarizeBy: sum
+		sourceColumn: total_lines_accepted
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_active_users
+		dataType: int64
+		formatString: 0
+		lineageTag: 27d81d5c-52a3-4f95-aa42-2b61e47cb7da
+		summarizeBy: sum
+		sourceColumn: total_active_users
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_chat_acceptances
+		dataType: int64
+		formatString: 0
+		lineageTag: 478f5bd8-371c-4bca-84be-e005422da165
+		summarizeBy: sum
+		sourceColumn: total_chat_acceptances
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_chat_turns
+		dataType: int64
+		formatString: 0
+		lineageTag: ecb5e768-1886-4d79-a6a6-6b6fed2a4050
+		summarizeBy: sum
+		sourceColumn: total_chat_turns
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_active_chat_users
+		dataType: int64
+		formatString: 0
+		lineageTag: abec2613-f1ee-4d24-affb-cba262c1d2c7
+		summarizeBy: sum
+		sourceColumn: total_active_chat_users
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column breakdown
+		dataType: string
+		lineageTag: a7380f7d-1dae-4c0f-9323-5717817ac61a
+		summarizeBy: none
+		sourceColumn: breakdown
+
+		annotation SummarizationSetBy = Automatic
+
+	column prompt_acceptance_rate = [total_acceptances_count] / [total_suggestions_count]
+		formatString: 0%;-0%;0%
+		lineageTag: f6cf1d95-ff55-4b61-b524-7a079fbe34bc
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_acceptance_rate = [total_lines_accepted] / [total_lines_suggested]
+		formatString: 0%;-0%;0%
+		lineageTag: a64aca15-4e2a-4984-ae89-ec0e2cd2f6d2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column chat_acceptance_rate = [total_chat_acceptances] / [total_chat_turns]
+		formatString: 0%;-0%;0%
+		lineageTag: ce18e451-b936-4992-8e47-1e9ba3c405c9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'GH Copilot - Summary' = m
+		mode: import
+		source =
+				let
+				  Source = Json.Document(File.Contents("C:\Code\copilot-metrics-viewer-power-bi\samples\copilot_usage_response_sample.json")),
+				  #"Converted to table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				  #"Expanded summary data" = Table.ExpandRecordColumn(#"Converted to table", "Column1", {"day", "total_suggestions_count", "total_acceptances_count", "total_lines_suggested", "total_lines_accepted", "total_active_users", "total_chat_acceptances", "total_chat_turns", "total_active_chat_users", "breakdown"}, {"day", "total_suggestions_count", "total_acceptances_count", "total_lines_suggested", "total_lines_accepted", "total_active_users", "total_chat_acceptances", "total_chat_turns", "total_active_chat_users", "breakdown"})
+				in
+				  #"Expanded summary data"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

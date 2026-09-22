@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "ab151e50-f8cc-4131-aa53-bac393feebf5",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "Category",
+        "targetPropertyId": "7179021255803144980"
+      },
+      {
+        "sourceColumnName": "IsActive",
+        "targetPropertyId": "7179021255393590919"
+      },
+      {
+        "sourceColumnName": "ProductID",
+        "targetPropertyId": "7179021254641989865"
+      },
+      {
+        "sourceColumnName": "ProductName",
+        "targetPropertyId": "7179021254934752362"
+      },
+      {
+        "sourceColumnName": "UnitPrice",
+        "targetPropertyId": "7179021254650852431"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "c6c07669-c821-9c5f-478d-1fccf8300747",
+      "sourceTableName": "products",
+      "sourceSchema": "ontology_demo"
+    }
+  }
+}

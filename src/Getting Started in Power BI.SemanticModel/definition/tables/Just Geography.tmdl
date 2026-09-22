@@ -1,0 +1,29 @@
+table 'Just Geography'
+	lineageTag: bc0d2841-54ca-462c-88d4-e579df792852
+
+	column 'Geography Group'
+		dataType: string
+		lineageTag: 3a11fc0a-8234-4488-8569-4ecafe8b40d9
+		summarizeBy: none
+		sourceColumn: Geography Group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Just Geography-7814ee7f-99a5-49d7-ab07-8fecf61eedc2' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("ZZDBDoIwEER/xXD2gEArPRqDRo1e0JPxsEKFJtCSCon+vd1qjdTTbPelk9k5n4PFXUAwDXI19PVkpzTHVxqGwWX6hVvoQBqlZLRe1kKizmfp73ojS6sRi37XxxpEA7LED3NqSTZo1XH80kPzNMrSaAzWXLcgEUWfSF+UdyAw1Ix4YKVBFjgwRsYkk9UnAXUH3rQoMF1WPbveaOKDvdKqKJSZYuKhJbRcK4UhkpiO2boG203iSnDgICqubSGJ8zMuzlBCCe+bfHbKF9jCP9jzh7D5CIt9v+GKQlPqgS208J5siMsL", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Geography Group" = _t, Country = _t, Sales = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Geography Group", type text}, {"Country", type text}, {"Sales", Currency.Type}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"Geography Group"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Replaced Value" = Table.ReplaceValue(#"Removed Duplicates","America","Americas",Replacer.ReplaceText,{"Geography Group"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Americas","North America",Replacer.ReplaceText,{"Geography Group"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","North America","N. America",Replacer.ReplaceText,{"Geography Group"})
+				in
+				    #"Replaced Value2"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

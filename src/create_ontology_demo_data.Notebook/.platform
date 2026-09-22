@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "create_ontology_demo_data",
+    "description": "Creates relational customer wellness data for the Fabric Ontology demo"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "eb5a36d8-ff2b-8cd8-4e3a-38ce70129b21"
+  }
+}

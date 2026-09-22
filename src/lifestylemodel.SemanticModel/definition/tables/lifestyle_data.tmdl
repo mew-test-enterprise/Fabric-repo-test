@@ -1,0 +1,260 @@
+table lifestyle_data
+	lineageTag: cd251d6e-1799-4dc2-84dd-c39850a2e267
+
+	column PersonID
+		dataType: int64
+		formatString: 0
+		lineageTag: df6e01da-039c-4f9e-9d53-8a3c98581ed0
+		summarizeBy: count
+		sourceColumn: PersonID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 8b41f85c-ba9b-47f2-9485-30ceec5f3ce0
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 00dff107-00e1-4599-aef8-48204273ae96
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: 4714b05c-9f5d-4454-b951-9e65b622dc6f
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 8613aa1f-966f-4a75-9053-cc2c93a41174
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 8d81dce9-00f7-4240-bf27-3198ddf0be90
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Occupation
+		dataType: string
+		lineageTag: 32ca0600-be92-4ee1-8441-fcf5fb6ab657
+		summarizeBy: none
+		sourceColumn: Occupation
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnnualIncome
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a1863c1-ff74-450b-9f53-1f66527a50bf
+		summarizeBy: sum
+		sourceColumn: AnnualIncome
+
+		annotation SummarizationSetBy = Automatic
+
+	column EducationLevel
+		dataType: string
+		lineageTag: d2aafd54-5eb9-490f-a30a-5578d9b4cd16
+		summarizeBy: none
+		sourceColumn: EducationLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaritalStatus
+		dataType: string
+		lineageTag: 906a8cba-d1e8-4ed1-a3f9-f4601ed489d2
+		summarizeBy: none
+		sourceColumn: MaritalStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column Children
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ca683e6-8ede-4925-acd9-d6fb3b9a327b
+		summarizeBy: sum
+		sourceColumn: Children
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExerciseFrequency
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c18a058-8669-4513-879c-69f7217b4790
+		summarizeBy: sum
+		sourceColumn: ExerciseFrequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column DietType
+		dataType: string
+		lineageTag: 657e5aa9-0a88-4eb1-8c48-0196136955a7
+		summarizeBy: none
+		sourceColumn: DietType
+
+		annotation SummarizationSetBy = Automatic
+
+	column SleepHours
+		dataType: double
+		lineageTag: 149751c9-2187-4040-828e-f29c4f6e78f8
+		summarizeBy: sum
+		sourceColumn: SleepHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StressLevel
+		dataType: string
+		lineageTag: 6d6404e3-efae-491f-995c-2d8b0214d220
+		summarizeBy: none
+		sourceColumn: StressLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column HobbiesCount
+		dataType: int64
+		formatString: 0
+		lineageTag: ec641228-1894-470b-916d-183771b02b58
+		summarizeBy: sum
+		sourceColumn: HobbiesCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column SocialMediaHours
+		dataType: double
+		lineageTag: a22e9910-3128-4c05-be66-f1103f557609
+		summarizeBy: sum
+		sourceColumn: SocialMediaHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ReadingHours
+		dataType: double
+		lineageTag: 9fc0640c-6bba-45d5-8353-edac892b4e0f
+		summarizeBy: sum
+		sourceColumn: ReadingHours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WorkHoursPerWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: 79fdbaea-365a-429b-b890-783b45ffc13f
+		summarizeBy: sum
+		sourceColumn: WorkHoursPerWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column CommuteMinutes
+		dataType: int64
+		formatString: 0
+		lineageTag: faa1feba-20e6-4478-b9e3-f164e2f7e2ff
+		summarizeBy: sum
+		sourceColumn: CommuteMinutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column SmokingStatus
+		dataType: string
+		lineageTag: 0d1a1a32-e565-4b26-8117-2f0139a64597
+		summarizeBy: none
+		sourceColumn: SmokingStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlcoholConsumption
+		dataType: string
+		lineageTag: c73c2541-01f5-42f9-993b-49e473033e73
+		summarizeBy: none
+		sourceColumn: AlcoholConsumption
+
+		annotation SummarizationSetBy = Automatic
+
+	column CoffeeConsumption
+		dataType: int64
+		formatString: 0
+		lineageTag: 76692baa-bbb2-4cc8-9c4e-d46ceb8ee6aa
+		summarizeBy: sum
+		sourceColumn: CoffeeConsumption
+
+		annotation SummarizationSetBy = Automatic
+
+	column WaterIntakeLiters
+		dataType: double
+		lineageTag: 406c6a44-57ca-441c-aa16-391a9a3a1400
+		summarizeBy: sum
+		sourceColumn: WaterIntakeLiters
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BMI
+		dataType: double
+		lineageTag: eef88b86-4ef0-4f1d-ab04-e0fd549c7407
+		summarizeBy: sum
+		sourceColumn: BMI
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HealthRating
+		dataType: string
+		lineageTag: b957a568-e1fc-4307-8c2d-ba4894b413be
+		summarizeBy: none
+		sourceColumn: HealthRating
+
+		annotation SummarizationSetBy = Automatic
+
+	column LifeSatisfaction
+		dataType: int64
+		formatString: 0
+		lineageTag: 585ae49a-6267-4dbf-a649-a6755c28b034
+		summarizeBy: sum
+		sourceColumn: LifeSatisfaction
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkLifeBalance
+		dataType: int64
+		formatString: 0
+		lineageTag: b9ccf8a3-b060-4b05-b51b-c6262d547d10
+		summarizeBy: sum
+		sourceColumn: WorkLifeBalance
+
+		annotation SummarizationSetBy = Automatic
+
+	partition lifestyle_data = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(Web.Contents("https://mngenvmcap953893-my.sharepoint.com/personal/admin_mngenvmcap953893_onmicrosoft_com/Documents/Apps/Microsoft Power Query/Uploaded Files/lifestyle_data.csv"), [Delimiter = ",", Columns = 28, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"PersonID", Int64.Type}, {"Name", type text}, {"Age", Int64.Type}, {"Gender", type text}, {"Country", type text}, {"City", type text}, {"Occupation", type text}, {"AnnualIncome", Int64.Type}, {"EducationLevel", type text}, {"MaritalStatus", type text}, {"Children", Int64.Type}, {"ExerciseFrequency", Int64.Type}, {"DietType", type text}, {"SleepHours", type number}, {"StressLevel", type text}, {"HobbiesCount", Int64.Type}, {"SocialMediaHours", type number}, {"ReadingHours", type number}, {"WorkHoursPerWeek", Int64.Type}, {"CommuteMinutes", Int64.Type}, {"SmokingStatus", type text}, {"AlcoholConsumption", type text}, {"CoffeeConsumption", Int64.Type}, {"WaterIntakeLiters", type number}, {"BMI", type number}, {"HealthRating", type text}, {"LifeSatisfaction", Int64.Type}, {"WorkLifeBalance", Int64.Type}})
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

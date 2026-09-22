@@ -1,0 +1,52 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/dataBinding/1.0.0/schema.json",
+  "id": "34f6dec1-6953-4778-b627-7e6f3d780d29",
+  "dataBindingConfiguration": {
+    "dataBindingType": "NonTimeSeries",
+    "propertyBindings": [
+      {
+        "sourceColumnName": "Age",
+        "targetPropertyId": "7097648736847743274"
+      },
+      {
+        "sourceColumnName": "City",
+        "targetPropertyId": "7097648734543649329"
+      },
+      {
+        "sourceColumnName": "Country",
+        "targetPropertyId": "7097648735120705460"
+      },
+      {
+        "sourceColumnName": "CustomerID",
+        "targetPropertyId": "7097648734819787846"
+      },
+      {
+        "sourceColumnName": "CustomerName",
+        "targetPropertyId": "7097648733429420929"
+      },
+      {
+        "sourceColumnName": "Gender",
+        "targetPropertyId": "7097648735872519932"
+      },
+      {
+        "sourceColumnName": "JoinDate",
+        "targetPropertyId": "7097648736990479201"
+      },
+      {
+        "sourceColumnName": "MembershipTier",
+        "targetPropertyId": "7097648736586116404"
+      },
+      {
+        "sourceColumnName": "Occupation",
+        "targetPropertyId": "7097648736387551534"
+      }
+    ],
+    "sourceTableProperties": {
+      "sourceType": "LakehouseTable",
+      "workspaceId": "00000000-0000-0000-0000-000000000000",
+      "itemId": "c6c07669-c821-9c5f-478d-1fccf8300747",
+      "sourceTableName": "customers",
+      "sourceSchema": "ontology_demo"
+    }
+  }
+}

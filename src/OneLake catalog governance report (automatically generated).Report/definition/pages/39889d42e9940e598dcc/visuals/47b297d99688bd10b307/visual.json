@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "47b297d99688bd10b307",
+  "position": {
+    "x": 16.47058823529412,
+    "y": 89,
+    "z": 9531,
+    "height": 497.47058823529414,
+    "width": 242.35294117647061,
+    "tabOrder": 7000
+  },
+  "visualGroup": {
+    "displayName": "Inventory cards",
+    "groupMode": "ScaleMode"
+  }
+}

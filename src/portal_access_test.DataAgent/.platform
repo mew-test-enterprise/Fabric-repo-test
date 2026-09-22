@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataAgent",
+    "displayName": "portal_access_test",
+    "description": "Native agent created to validate the Fabric editor"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "69119ab4-9ae5-83ea-4697-6fbe565f0df2"
+  }
+}

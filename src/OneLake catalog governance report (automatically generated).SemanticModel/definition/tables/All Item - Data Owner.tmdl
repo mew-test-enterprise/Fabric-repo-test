@@ -1,0 +1,383 @@
+table 'All Item - Data Owner'
+	lineageTag: a7cf5bdf-507a-4c79-ad09-5463275e6a15
+
+	column 'Item ID'
+		dataType: string
+		lineageTag: 7682acaf-abcd-48d9-a197-9f3d5a126a64
+		summarizeBy: none
+		sourceColumn: Item ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item name'
+		dataType: string
+		lineageTag: 1ea9cca7-acc7-46e2-8bf6-b82dc3877279
+		summarizeBy: none
+		sourceColumn: Item name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Workspace ID'
+		dataType: string
+		lineageTag: 8fd0c8a6-84af-41ea-92f7-312aec9e54b4
+		summarizeBy: none
+		sourceColumn: Workspace ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Workspace name'
+		dataType: string
+		lineageTag: 5db4353b-2a96-4655-9191-d3b1d75508a6
+		summarizeBy: none
+		sourceColumn: Workspace name
+
+		annotation SummarizationSetBy = Automatic
+
+	column ArtifactTypeFabric
+		dataType: string
+		lineageTag: eac3c656-dff3-4bfe-880d-59317d0333eb
+		summarizeBy: none
+		sourceColumn: ArtifactTypeFabric
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last refresh time'
+		dataType: string
+		lineageTag: d8ac2a93-75e8-4933-b494-f18c8a9c1dc5
+		summarizeBy: none
+		sourceColumn: Last refresh time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item size MB'
+		dataType: string
+		lineageTag: f623c3f6-e329-418a-9db3-cdb6eb7eaada
+		summarizeBy: none
+		sourceColumn: Item size MB
+
+		annotation SummarizationSetBy = Automatic
+
+	column Endorsement
+		dataType: string
+		lineageTag: 067f33ea-3171-47e5-a405-fdf095f5c5a2
+		summarizeBy: none
+		sourceColumn: Endorsement
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last visited time'
+		dataType: string
+		lineageTag: 158583d2-3199-43f6-a87a-df08f458d693
+		summarizeBy: none
+		sourceColumn: Last visited time
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discoverability
+		dataType: string
+		lineageTag: 8f179a85-acb3-40ef-9850-8e630c3c17cc
+		summarizeBy: none
+		sourceColumn: Discoverability
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Label name'
+		dataType: string
+		lineageTag: d0936a33-86d4-4dfc-9550-73216f8aa897
+		summarizeBy: none
+		sourceColumn: Label name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Protected label'
+		dataType: string
+		lineageTag: b038ea17-7548-4d79-b0ed-126ef0a033b9
+		summarizeBy: none
+		sourceColumn: Protected label
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Label applied method'
+		dataType: string
+		lineageTag: b0774f62-9269-48ed-a6f0-80ec60f9c634
+		summarizeBy: none
+		sourceColumn: Label applied method
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item type'
+		dataType: string
+		lineageTag: 107f0894-5f29-4177-99b8-16f31c4dfc1f
+		summarizeBy: none
+		sourceColumn: Item type
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsLabeled = [Endorsement] <> "No Label"
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 88c3461d-71b7-4470-826c-f1822022d838
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Months from last refresh' = DATEDIFF([Last refresh time], UTCNOW(), MONTH)
+		formatString: 0
+		lineageTag: 34967399-60ff-4e2c-85f8-e684b0f3af24
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Months from last visited' = DATEDIFF([Last visited time], UTCNOW(), MONTH)
+		formatString: 0
+		lineageTag: 992d21e5-eff5-42cb-82a9-0bc1fb540e3c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 90ee5df1-ef48-4293-89fa-da0fb60cbdc2
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Refresh groups' =
+			
+			IF(
+			    ISBLANK('All Item - Data Owner'[Months from last refresh]),
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        'All Item - Data Owner'[Months from last refresh] = 0 || 'All Item - Data Owner'[Months from last refresh] = 1, "Last month",
+			        'All Item - Data Owner'[Months from last refresh] >= 2 && 'All Item - Data Owner'[Months from last refresh] <= 4, "2-4 months",
+			        'All Item - Data Owner'[Months from last refresh] > 4, "> 4 months"
+			    )
+			)
+		lineageTag: 0ccc44bd-b5db-472e-8d4c-022aa2144202
+		summarizeBy: none
+		sortByColumn: 'Refresh groups sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Refresh groups sort' =
+			
+			IF(
+			    ISBLANK('All Item - Data Owner'[Months from last refresh]),
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        'All Item - Data Owner'[Months from last refresh] = 0 || 'All Item - Data Owner'[Months from last refresh] = 1, 1,
+			        'All Item - Data Owner'[Months from last refresh] >= 2 && 'All Item - Data Owner'[Months from last refresh] <= 4, 2,
+			        'All Item - Data Owner'[Months from last refresh] > 4, 3
+			    )
+			)
+		formatString: 0
+		lineageTag: 5c421913-17f2-4c14-b088-2a329230ac0a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Visit groups' =
+			
+			IF(
+			    ISBLANK('All Item - Data Owner'[Months from last visited]),
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        'All Item - Data Owner'[Months from last visited] = 0 || 'All Item - Data Owner'[Months from last visited] = 1, "Last month",
+			        'All Item - Data Owner'[Months from last visited] >= 2 && 'All Item - Data Owner'[Months from last visited] <= 4, "2-4 months",
+			        'All Item - Data Owner'[Months from last visited] > 4, "> 4 months"
+			    )
+			)
+		lineageTag: 756442dd-1b67-4a44-9a93-3ec6a6e15c95
+		summarizeBy: none
+		sortByColumn: 'Visit groups sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Visit groups sort' =
+			
+			IF(
+			    ISBLANK('All Item - Data Owner'[Months from last visited]),
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        'All Item - Data Owner'[Months from last visited] = 0 || 'All Item - Data Owner'[Months from last visited] = 1, 1,
+			        'All Item - Data Owner'[Months from last visited] >= 2 && 'All Item - Data Owner'[Months from last visited] <= 4, 2,
+			        'All Item - Data Owner'[Months from last visited] > 4, 3
+			    )
+			)
+		formatString: 0
+		lineageTag: 9f698a8c-fbf2-488e-a742-5c0a351782e5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column HasTags
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 41bef379-947e-4de9-9be8-08b7d2ac807e
+		summarizeBy: none
+		sourceColumn: HasTags
+
+		annotation SummarizationSetBy = Automatic
+
+	column DomainName
+		dataType: string
+		lineageTag: 8ac71478-86fb-4374-b8b2-06493e60cda6
+		summarizeBy: none
+		sourceColumn: DomainName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentDomainName
+		dataType: string
+		lineageTag: 45d16c1f-7070-4a67-b10e-3747b731643c
+		summarizeBy: none
+		sourceColumn: ParentDomainName
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Workspace assigned status' = IF(ISBLANK('All Item - Data Owner'[DomainName]), "Unassigned", "Assigned")
+		lineageTag: d83aeb74-8651-4aa2-8783-bf64f38606ce
+		summarizeBy: none
+		sortByColumn: 'Workspace assigned status sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Workspace assigned status sort' = IF(ISBLANK('All Item - Data Owner'[DomainName]), "2", "1")
+		lineageTag: 649df3d2-d58f-4a49-9e08-f247e90500fa
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column DomainObjectId
+		dataType: string
+		lineageTag: ba91d0fe-0f30-4609-9451-9c749b2404a6
+		summarizeBy: none
+		sourceColumn: DomainObjectId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ParentDomainObjectId
+		dataType: string
+		lineageTag: 43aeae9d-7778-4d1a-92d2-6ae19ce4ab85
+		summarizeBy: none
+		sourceColumn: ParentDomainObjectId
+
+		annotation SummarizationSetBy = Automatic
+
+	column artifactTypeIDPBI
+		dataType: string
+		lineageTag: b45af176-9040-4e1a-9da7-406994337910
+		summarizeBy: none
+		sourceColumn: artifactTypeIDPBI
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastRefreshStatus
+		dataType: string
+		lineageTag: 61ee5e0b-f751-4377-9b54-0b6a6f1bba51
+		summarizeBy: none
+		sourceColumn: LastRefreshStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastRefreshFailed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 730ec538-6de8-48a2-b41f-408ed569d4f1
+		summarizeBy: none
+		sourceColumn: LastRefreshFailed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hierarchy parent domain name' = ```
+			
+			    IF(
+			        ISBLANK('All Item - Data Owner'[ParentDomainName]), 
+			        IF(
+			            ISBLANK('All Item - Data Owner'[DomainName]), 
+			            "No domain",  // If both DomainName and ParentDomainName are blank, assign "No domain"
+			            'All Item - Data Owner'[DomainName]  // Otherwise, assign the domain name
+			        ), 
+			        'All Item - Data Owner'[ParentDomainName] // If ParentDomainName is not blank, assign it
+			    )
+			```
+		lineageTag: 5b4e5884-b3a0-4bbd-be30-63213d3bba51
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hierarchy sub domain name' = ```
+			
+			    IF(
+			        ISBLANK('All Item - Data Owner'[ParentDomainName]), 
+			        "", 
+			        'All Item - Data Owner'[DomainName]
+			    )
+			```
+		lineageTag: acf3f425-dcb8-4df9-a865-a09774d05091
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hierarchy parent domain id' = ```
+			
+			    IF(
+			        ISBLANK('All Item - Data Owner'[ParentDomainObjectId]), 
+			        IF(
+			            ISBLANK('All Item - Data Owner'[DomainObjectId]), 
+			            BLANK(),  // If both DomainObjectId and ParentDomainObjectId are blank, assign Blank
+			            'All Item - Data Owner'[DomainObjectId]  // Otherwise, assign the domain id
+			        ), 
+			        'All Item - Data Owner'[ParentDomainObjectId] // If ParentDomainObjectId is not blank, assign it
+			    )
+			
+			
+			```
+		lineageTag: ee7c138a-0f52-484e-983f-5b8072ce2aa5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hierarchy sub domain id' = ```
+			
+			    IF(
+			        ISBLANK('All Item - Data Owner'[ParentDomainObjectId]), 
+			        BLANK(), 
+			        'All Item - Data Owner'[DomainObjectId]
+			    )
+			```
+		lineageTag: b83ddc8c-d9ac-4f5c-b642-7c930bc67b79
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsSharedExternally = IF(ISBLANK(RELATED(DataSharesStats[Item ID])), false, true)
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5c7f3fab-94dd-43d3-8b94-3cd89d212016
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'All Item - Data Owner' = m
+		mode: import
+		queryGroup: Fact
+		source =
+				let
+				    Source = Table.Combine({SolutionsArtifacts, DataArtifacts, InsightArtifacts, ProcessArtifacts, ConfigurationsArtifacts, PowerBIArtifacts})
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

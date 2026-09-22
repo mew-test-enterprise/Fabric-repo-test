@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/contextualization/1.0.0/schema.json",
+  "id": "44a2cf16-b685-4bad-b593-e336f0a8ee9e",
+  "dataBindingTable": {
+    "workspaceId": "00000000-0000-0000-0000-000000000000",
+    "itemId": "c6c07669-c821-9c5f-478d-1fccf8300747",
+    "sourceTableName": "purchase_items",
+    "sourceSchema": "ontology_demo",
+    "sourceType": "LakehouseTable"
+  },
+  "sourceKeyRefBindings": [
+    {
+      "sourceColumnName": "PurchaseItemID",
+      "targetPropertyId": "7161626679210973045"
+    }
+  ],
+  "targetKeyRefBindings": [
+    {
+      "sourceColumnName": "ProductID",
+      "targetPropertyId": "7179021254641989865"
+    }
+  ]
+}

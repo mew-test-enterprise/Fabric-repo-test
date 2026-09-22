@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Getting Started in Power BI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d7c015f8-b812-8643-4346-76e04ad9d9f0"
+  }
+}

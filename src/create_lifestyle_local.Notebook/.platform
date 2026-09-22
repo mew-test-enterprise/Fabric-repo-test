@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "create_lifestyle_local",
+    "description": "Creates the local lifestyle_data Delta table"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7fc4a434-8538-8240-4e37-a8341db0a297"
+  }
+}

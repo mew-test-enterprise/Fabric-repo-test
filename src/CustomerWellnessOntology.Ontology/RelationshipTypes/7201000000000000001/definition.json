@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/ontology/relationshipType/1.0.0/schema.json",
+  "namespace": "usertypes",
+  "id": "7201000000000000001",
+  "name": "makes-purchase",
+  "namespaceType": "Custom",
+  "source": {
+    "entityTypeId": "151187454732645"
+  },
+  "target": {
+    "entityTypeId": "217487841873924"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "c43271842b1c2e7674e9",
+  "position": {
+    "x": 127.83333333334062,
+    "y": 2014,
+    "z": 2500,
+    "height": 26.730994152046833,
+    "width": 353.24561403508767,
+    "tabOrder": -1001
+  },
+  "visualGroup": {
+    "displayName": "Discover cards info",
+    "groupMode": "ScaleMode"
+  }
+}

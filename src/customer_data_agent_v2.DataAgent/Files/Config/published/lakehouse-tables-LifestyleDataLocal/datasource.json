@@ -1,0 +1,282 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/dataSource/1.0.0/schema.json",
+  "artifactId": "c6c07669-c821-9c5f-478d-1fccf8300747",
+  "workspaceId": "00000000-0000-0000-0000-000000000000",
+  "dataSourceInstructions": null,
+  "displayName": "LifestyleDataLocal",
+  "type": "lakehouse_tables",
+  "userDescription": "Self-contained local lifestyle dataset with 1,000 synthetic records for reliable Data Agent queries.",
+  "metadata": {},
+  "elements": [
+    {
+      "id": "4d725204-df84-41e2-b95a-913d0182e19e",
+      "is_selected": false,
+      "display_name": "dbo",
+      "type": "lakehouse_tables.schema",
+      "description": null,
+      "children": [
+        {
+          "id": "c30f7da6-ac2a-4697-8ed7-713556ead2f4",
+          "is_selected": true,
+          "display_name": "lifestyle_data",
+          "type": "lakehouse_tables.table",
+          "description": null,
+          "children": [
+            {
+              "id": "f59cf80b-c570-49af-8f8c-1226e1afafd2",
+              "is_selected": true,
+              "display_name": "Age",
+              "type": "lakehouse_tables.column",
+              "data_type": "int",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "8810bb5b-921c-4272-9b34-0dbfe058409a",
+              "is_selected": true,
+              "display_name": "AlcoholConsumption",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "77a37bef-996d-46d0-b253-f491cca802bf",
+              "is_selected": true,
+              "display_name": "AnnualIncome",
+              "type": "lakehouse_tables.column",
+              "data_type": "int",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "7dfe77f3-3fa2-4f4a-8060-3a971b623644",
+              "is_selected": true,
+              "display_name": "BMI",
+              "type": "lakehouse_tables.column",
+              "data_type": "float",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "d417bbfd-df88-4b83-9d60-51cdee540d34",
+              "is_selected": true,
+              "display_name": "Children",
+              "type": "lakehouse_tables.column",
+              "data_type": "int",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "1321beb0-a820-4a42-abfa-bf4ef5401afc",
+              "is_selected": true,
+              "display_name": "City",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "26f98634-f86e-4557-8bc6-b68adac0f740",
+              "is_selected": true,
+              "display_name": "CoffeeConsumption",
+              "type": "lakehouse_tables.column",
+              "data_type": "int",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "2201dba6-c460-4179-a9fa-7e6b89dd6a80",
+              "is_selected": true,
+              "display_name": "CommuteMinutes",
+              "type": "lakehouse_tables.column",
+              "data_type": "int",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "e1a285d1-1d7e-4a5f-a98c-19345e5d7422",
+              "is_selected": true,
+              "display_name": "Country",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "7c84d493-8114-4833-8b79-7ce042d15423",
+              "is_selected": true,
+              "display_name": "DietType",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "99b43e68-894e-45fb-9643-e0704cedffd6",
+              "is_selected": true,
+              "display_name": "EducationLevel",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "c40bf04f-8223-478c-8dd5-ab7b793088e1",
+              "is_selected": true,
+              "display_name": "ExerciseFrequency",
+              "type": "lakehouse_tables.column",
+              "data_type": "int",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "bee4cf61-4d8e-4d0e-9b7a-de7d2eabdd31",
+              "is_selected": true,
+              "display_name": "Gender",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "89e4bc19-259b-46a0-9bd2-85f060715141",
+              "is_selected": true,
+              "display_name": "HealthRating",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "8b96f804-d367-4bce-9a09-c028103f75f8",
+              "is_selected": true,
+              "display_name": "HobbiesCount",
+              "type": "lakehouse_tables.column",
+              "data_type": "int",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "9aaffd49-2dd3-4386-9ef9-504bbcca50ac",
+              "is_selected": true,
+              "display_name": "LifeSatisfaction",
+              "type": "lakehouse_tables.column",
+              "data_type": "int",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "aba68319-4d72-4f4c-a7b0-ffdbda221940",
+              "is_selected": true,
+              "display_name": "MaritalStatus",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "864ffea5-95d3-423b-b7f0-e22ad93518ab",
+              "is_selected": true,
+              "display_name": "Name",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "66a61697-9821-418f-a550-db499aca303e",
+              "is_selected": true,
+              "display_name": "Occupation",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "a40b08bb-a3ae-4306-b2cf-ac3f47696d1d",
+              "is_selected": true,
+              "display_name": "PersonID",
+              "type": "lakehouse_tables.column",
+              "data_type": "int",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "096936b6-bc31-44c6-9729-8659bbf42f59",
+              "is_selected": true,
+              "display_name": "ReadingHours",
+              "type": "lakehouse_tables.column",
+              "data_type": "float",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "d022ffe0-b0ea-4b90-b62f-c89af098bf42",
+              "is_selected": true,
+              "display_name": "SleepHours",
+              "type": "lakehouse_tables.column",
+              "data_type": "float",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "36dfbf61-2dcd-4841-968e-6e26fb2900e8",
+              "is_selected": true,
+              "display_name": "SmokingStatus",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "1ae232e1-7852-48b7-8ef2-654c01c161d9",
+              "is_selected": true,
+              "display_name": "SocialMediaHours",
+              "type": "lakehouse_tables.column",
+              "data_type": "float",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "958ddab6-756a-4d82-99e9-1bf4661113f7",
+              "is_selected": true,
+              "display_name": "StressLevel",
+              "type": "lakehouse_tables.column",
+              "data_type": "varchar",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "a65e16c6-e3a8-40fe-b150-144c74a8bc3c",
+              "is_selected": true,
+              "display_name": "WaterIntakeLiters",
+              "type": "lakehouse_tables.column",
+              "data_type": "float",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "c088f302-b2b1-43f5-ac13-6a3b2a3cf0dd",
+              "is_selected": true,
+              "display_name": "WorkHoursPerWeek",
+              "type": "lakehouse_tables.column",
+              "data_type": "int",
+              "description": null,
+              "children": []
+            },
+            {
+              "id": "0f1ba4bd-1b9e-4ee0-a5ab-dbdd2283da19",
+              "is_selected": true,
+              "display_name": "WorkLifeBalance",
+              "type": "lakehouse_tables.column",
+              "data_type": "int",
+              "description": null,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
